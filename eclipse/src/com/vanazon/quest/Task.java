@@ -10,6 +10,6 @@ public class Task {
 	List<GameObject> startUnLoadObject, endUnLoadObject;
 	HashMap<GameObject,List<GameObject>> changeLoadOnUseObject;
 	 
-	List<String> startLoadBipmap,endLoad;
+	List<String> startLoadBipmap,endLoadBipmap;
 
 }
