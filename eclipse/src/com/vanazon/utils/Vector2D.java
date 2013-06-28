@@ -1,8 +1,8 @@
 package com.vanazon.utils;
 
 public class Vector2D {
-	private int x;
-	private int y;
+	int x;
+	int y;
 	
 	public Vector2D() {
 		x = 0;

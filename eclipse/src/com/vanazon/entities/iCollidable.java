@@ -3,5 +3,5 @@ package com.vanazon.entities;
 import com.vanazon.utils.BoundingBox;
 
 public interface iCollidable {
-	public void collides(BoundingBox box);
+	public boolean collides(BoundingBox bbox);
 }
