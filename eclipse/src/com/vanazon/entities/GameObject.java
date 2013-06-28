@@ -1,5 +1,8 @@
 package com.vanazon.entities;
 
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+
 import com.vanazon.utils.BoundingBox;
 import com.vanazon.utils.Vector2D;
 import com.vanazon.settings.PlayerSettings;
@@ -8,6 +11,7 @@ public class GameObject implements iRenderable, iCollidable {
 	private Vector2D position;
 	private Vector2D size;
 	private BoundingBox bbox;
+	private Bitmap bitmap;
 	
 	public GameObject(Vector2D position, Vector2D size) {
 		this.position = position;
@@ -22,8 +26,7 @@ public class GameObject implements iRenderable, iCollidable {
 	
 	@Override
 	public void Render() {
-		//TODO: ATHENA DRAW IMAGE HERE
-		
+		//canvas.drawBitmap(bitmap, position.getX() - (bitmap.getWidth() / 2), position.getY() - (bitmap.getHeight() / 2), null);
 	}
 
 	@Override
