@@ -1,5 +1,7 @@
 package com.vanazon.entities;
 
-public interface iCollidable {
+import com.vanazon.utils.BoundingBox;
 
+public interface iCollidable {
+	public void collides(BoundingBox box);
 }
