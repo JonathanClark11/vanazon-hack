@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:creativeCommons="http://backend.userland.com/creativeCommonsRssModule" ...">     
+	<entry>
+		<id>enityA</id>
+		<BipLoad>aLB,bLB,cLB</BipLoad>
+		<BipUnLoad>aUB,bUB,cUB</BipUnLoad>
+		<ObjectLoad>aO,bO,cO</ObjectLoad>
+		<ObjectUnLoad>aUO,bUO,cUO</ObjectUnLoad>
+	</entry>
+	<entry>
+		<id>enityB</id>
+		<BipLoad>aLB,bLB,cLB</BipLoad>
+		<BipUnLoad>aUB,bUB,cUB</BipUnLoad>
+		<ObjectLoad>aO,bO,cO</ObjectLoad>
+		<ObjectUnLoad>aUO,bUO,cUO</ObjectUnLoad>
+	</entry>
+</feed>
