@@ -1,8 +1,8 @@
 package com.vanazon.utils;
 
 public class Vector2D {
-	float x;
-	float y;
+	public float x;
+	public float y;
 	
 	public Vector2D() {
 		x = 0;
@@ -20,6 +20,14 @@ public class Vector2D {
 	public Vector2D(Vector2D from, Vector2D to) {
 		this.x = to.x - from.x;
 		this.y = to.y - from.y;
+	}
+	
+	public float getX(){
+		return x;
+	}
+	
+	public float getY(){
+		return y;
 	}
 	
 	/**
