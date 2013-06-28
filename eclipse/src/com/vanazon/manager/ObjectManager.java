@@ -12,10 +12,8 @@ import com.vanazon.entities.iUpdateable;
 public class ObjectManager {
 	private List<GameObject> objects;
 	private Player player;
-	private Canvas canvas;
-	public ObjectManager(Canvas canvas) {
+	public ObjectManager() {
 		objects = new ArrayList<GameObject>();
-		this.canvas = canvas;
 	}
 	
 	public void addObject(GameObject obj) {
@@ -26,7 +24,7 @@ public class ObjectManager {
 		objects.remove(obj);
 	}
 	
-	public void UpdateGameObjects() {
+	public void updateGameObjects() {
 		for(GameObject obj : objects) {
 			if (obj instanceof iUpdateable) {
 				((iUpdateable) obj).Update();
@@ -34,7 +32,7 @@ public class ObjectManager {
 		}
 	}
 	
-	public void RenderGameObjects() {
+	public void renderGameObjects(Canvas canvas) {
 		for (GameObject obj : objects) {
 			obj.Render(canvas);
 		}
