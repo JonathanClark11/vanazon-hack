@@ -1,5 +1,7 @@
 package com.vanazon.entities;
 
+import android.graphics.Canvas;
+
 import com.vanazon.utils.BoundingBox;
 import com.vanazon.utils.Vector2D;
 import com.vanazon.settings.PlayerSettings;
@@ -21,7 +23,7 @@ public class GameObject implements iRenderable, iCollidable {
 	}
 	
 	@Override
-	public void Render() {
+	public void Render(Canvas canvas) {
 		//TODO: ATHENA DRAW IMAGE HERE
 		
 	}
