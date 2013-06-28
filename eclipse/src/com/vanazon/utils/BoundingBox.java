@@ -18,10 +18,7 @@ public class BoundingBox implements iCollidable {
 	
 	@Override
 	public boolean collides(BoundingBox bbox) {
-		// TODO Auto-generated method stub
 		return (Math.abs(position.x - bbox.position.x) * 2 < (size.x + bbox.size.x)) &&
 		         (Math.abs(position.y - bbox.position.y) * 2 < (size.y + bbox.size.y));
 	}
-	
-	
 }
