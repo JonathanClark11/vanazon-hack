@@ -32,7 +32,7 @@ public class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
     // Once complete, get helper to return bitmap
     @Override
     protected void onPostExecute(Bitmap bitmap) {
-    	fetcher.addBitmap(bitmap);
+    	fetcher.addBitmap(resId, bitmap);
     }
     
 
