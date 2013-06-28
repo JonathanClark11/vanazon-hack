@@ -14,14 +14,16 @@ public class GameObject implements iRenderable, iCollidable {
 	private Bitmap bitmap;
 	
 	public GameObject(Vector2D position, Vector2D size) {
-		this.position = position;
-		this.size = size;
-		bbox = new BoundingBox(position, size);
+		this(position, size, null);
 	}
-	public GameObject(Vector2D position, Vector2D size, BoundingBox bbox) {
+	public GameObject(Vector2D position, Vector2D size, Bitmap bitmap) {
+		this(position, size, new BoundingBox(), bitmap);
+	}
+	public GameObject(Vector2D position, Vector2D size, BoundingBox bbox, Bitmap bitmap) {
 		this.position = position;
 		this.size = size;
 		this.bbox = bbox;
+		this.bitmap = bitmap;
 	}
 	
 	@Override
