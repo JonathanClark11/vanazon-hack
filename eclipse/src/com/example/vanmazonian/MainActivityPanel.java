@@ -1,5 +1,7 @@
 package com.example.vanmazonian;
 
+import com.vanazon.manager.ObjectManager;
+
 import android.content.Context;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
@@ -10,12 +12,16 @@ import android.view.SurfaceView;
 public class MainActivityPanel extends SurfaceView implements Callback {
 
 	private MainThread thread;
+	private ObjectManager objManager;
 	
 	public MainActivityPanel(Context context) {
 		super(context);
 		getHolder().addCallback(this);
 		thread = new MainThread(getHolder(), this);
 		setFocusable(true);
+		
+		//Init variables here
+		objManager = new ObjectManager();
 	}
 
 	@Override
@@ -54,11 +60,11 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 	}
 
 	protected void render(Canvas canvas) {
-		
+		objManager.renderGameObjects(canvas);
 	}
 	
 	public void update() {
-		
+		objManager.updateGameObjects();
 	}
 	
 	
