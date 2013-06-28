@@ -26,7 +26,7 @@ public class GameObject implements iRenderable, iCollidable {
 	
 	@Override
 	public void Render(Canvas canvas) {
-	canvas.drawBitmap(bitmap, position.getX() - (bitmap.getWidth() / 2), position.getY() - (bitmap.getHeight() / 2), null);
+		canvas.drawBitmap(bitmap, position.x - (bitmap.getWidth() / 2), position.y - (bitmap.getHeight() / 2), null);
 	}
 
 	@Override
