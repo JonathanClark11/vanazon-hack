@@ -22,6 +22,14 @@ public class Vector2D {
 		this.y = to.y - from.y;
 	}
 	
+	public float getX(){
+		return x;
+	}
+	
+	public float getY(){
+		return y;
+	}
+	
 	/**
 	 * Calculates distance between this vector and point
 	 * @param point
