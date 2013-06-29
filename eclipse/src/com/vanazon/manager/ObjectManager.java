@@ -17,6 +17,10 @@ public class ObjectManager {
 		objects = new ArrayList<GameObject>();
 	}
 	
+	public void setPlayer(Player player) {
+		this.player = player;
+	}
+	
 	public void addObject(GameObject obj) {
 		objects.add(obj);
 	}
@@ -31,12 +35,14 @@ public class ObjectManager {
 				((iUpdateable) obj).Update();
 			}
 		}
+		player.Update();
 	}
 	
 	public void renderGameObjects(Canvas canvas) {
 		for (GameObject obj : objects) {
 			obj.Render(canvas);
 		}
+		player.Render(canvas);
 	}
 	
 	public void handleInput(MotionEvent event) {

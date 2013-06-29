@@ -8,31 +8,25 @@ import android.graphics.BitmapFactory;
 public class BitmapWorkerTask extends AsyncTask<Integer, Void, Bitmap> {
 	
 	private BitmapFetcher fetcher;
-    private Resources res;
-    private int resId;
-    private int reqWidth;
-    private int reqHeight;
+    private BitmapConfig config;
     
 
     // this task will load the bitmap in the background on execute
-    public BitmapWorkerTask(BitmapFetcher fetcher, Resources res, int resId, int reqWidth, int reqHeight) {
+    public BitmapWorkerTask(BitmapFetcher fetcher, BitmapConfig config) {
         this.fetcher = fetcher;
-        this.res = res;
-        this.resId = resId;
-        this.reqWidth = reqWidth;
-        this.reqHeight = reqHeight;
+        this.config = config;
     }
 
     // Decode image in background.
     @Override
     protected Bitmap doInBackground(Integer... params) {
-        return decodeSampledBitmapFromResource(res, resId, reqWidth, reqHeight);
+        return decodeSampledBitmapFromResource(config.res, config.resId, config.reqWidth, config.reqHeight);
     }
     
     // Once complete, get helper to return bitmap
     @Override
     protected void onPostExecute(Bitmap bitmap) {
-    	fetcher.addBitmap(resId, bitmap);
+    	fetcher.addBitmap(config.resId, bitmap);
     }
     
 

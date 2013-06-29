@@ -2,16 +2,38 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xmlns:creativeCommons="http://backend.userland.com/creativeCommonsRssModule" ...">     
 	<entry>
 		<id>enityA</id>
-		<BipLoad>aLB,bLB,cLB</BipLoad>
-		<BipUnLoad>aUB,bUB,cUB</BipUnLoad>
-		<ObjectLoad>aO,bO,cO</ObjectLoad>
-		<ObjectUnLoad>aUO,bUO,cUO</ObjectUnLoad>
+		<BipLoad>
+			<id>aLB</id>
+			<id>bLB</id>
+		</BipUnLoad>
+			<id>aULB</id>
+			<id>bULB</id>
+		</BipUnLoad>
+		<ObjectLoad>
+			<id>aLO</id>
+			<id>bLO</id>
+		</ObjectLoad>
+		<ObjectUnLoad>
+			<id>aULO</id>
+			<id>bULO</id>
+		</ObjectUnLoad>
 	</entry>
 	<entry>
 		<id>enityB</id>
-		<BipLoad>aLB,bLB,cLB</BipLoad>
-		<BipUnLoad>aUB,bUB,cUB</BipUnLoad>
-		<ObjectLoad>aO,bO,cO</ObjectLoad>
-		<ObjectUnLoad>aUO,bUO,cUO</ObjectUnLoad>
+		<BipLoad>
+			<id>cLB</id>
+			<id>dLB</id>
+		</BipUnLoad>
+			<id>cULB</id>
+			<id>dULB</id>
+		</BipUnLoad>
+		<ObjectLoad>
+			<id>cLO</id>
+			<id>dLO</id>
+		</ObjectLoad>
+		<ObjectUnLoad>
+			<id>cULO</id>
+			<id>dULO</id>
+		</ObjectUnLoad>
 	</entry>
 </feed>

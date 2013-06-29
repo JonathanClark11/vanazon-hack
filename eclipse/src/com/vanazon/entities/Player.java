@@ -1,5 +1,6 @@
 package com.vanazon.entities;
 
+import android.graphics.Bitmap;
 import android.view.MotionEvent;
 
 import com.vanazon.utils.Vector2D;
@@ -7,8 +8,9 @@ import com.vanazon.utils.Vector2D;
 public class Player extends GameObject implements iInput, iUpdateable {
 	private Vector2D velocity;
 	
-	public Player(Vector2D position, Vector2D size) {
-		super(new Vector2D(0, 0), new Vector2D(0, 0));
+	public Player(Vector2D position, Vector2D size, Bitmap bitmap) {
+		super(new Vector2D(0, 0), new Vector2D(0, 0), bitmap);
+		velocity = new Vector2D(0, 0);
 	}
 
 	@Override
