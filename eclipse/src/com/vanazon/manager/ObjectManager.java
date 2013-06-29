@@ -22,8 +22,10 @@ public class ObjectManager {
 	Quest q;
 	public ObjectManager(Context context) {
 		objects = new ArrayList<String>();
+		
 		objectMap = new HashMap<String,GameObject> ();
-		q = new Quest("data/GatsbyEntityData.xml", context.getAssets());
+		q = new Quest("data/testQuest.xml", context.getAssets());
+		objects = q.getObjectLoads("start");
 	}
 	
 	public Player getPlayer() {
@@ -35,7 +37,7 @@ public class ObjectManager {
 	
 	public void addObject(GameObject obj) {
 		objectMap.put(obj.getId(),obj);
-		objects.add(obj.getId());
+		//objects.add(obj.getId());
 	}
 	
 	public void removeObject(GameObject obj) {
@@ -74,9 +76,9 @@ public class ObjectManager {
 					if (unLoadS.contains(cRenderS)){
 						objects.remove(cRenderS);
 					}
-					if (loadS.contains(cRenderS)){
-						objects.add(cRenderS);
-					}
+				}
+				for(String item : loadS) {
+					objects.add(item);
 				}
 			}
 		}
