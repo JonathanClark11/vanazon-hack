@@ -103,7 +103,7 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		//Quest q = new Quest("data/GatsbyEntityData.xml", context.getAssets());
 		
 		loadGameObjectsFromFile(context, "data/TestGameObjects.xml");
-		Bitmap pauseBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.dock);
+		Bitmap pauseBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.pause_button);
 		
 		GameObject pauseBtn = new GameObject("PauseButton", new Vector2D(1100, 0), new Vector2D(100, 100), new BoundingBox(), pauseBitmap, "", "");
 		objManager.addObject(pauseBtn);
