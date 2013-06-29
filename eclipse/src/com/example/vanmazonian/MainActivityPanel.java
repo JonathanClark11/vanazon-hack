@@ -182,8 +182,10 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 			pmenu.show(((FragmentActivity) context).getSupportFragmentManager(), "pause");
 		}
 		if (DialogueManager.showDialogOnNextUpdate == true) {
-			DialogueManager.showDialog(context, DialogueManager.dialogText[0]);
-			DialogueManager.showDialogOnNextUpdate = false;
+			DialogueManager.showDialog(context, DialogueManager.process());
+			if(DialogueManager.getNumberOfPages() == DialogueManager.getPage()) {
+				DialogueManager.showDialogOnNextUpdate = false;
+			}
 		}
 		
 		consumed = objManager.handleInput(event);
@@ -194,17 +196,6 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		canvas.drawColor(Color.BLACK);
 		bgManager.render(canvas);
 		objManager.renderGameObjects(canvas);
-	}
-	
-	protected void renderDialogue() {
-		final Dialog dialog = new Dialog(context);
-		dialog.setContentView(R.layout.dialog);
-		TextView dialogue = (TextView) dialog.findViewById(R.id.text);
-		if (dialogue != null) {
-			String text = dManager.process();
-			dialogue.setText(text);
-			dialog.show();
-		}
 	}
 	
 	public void update() {
