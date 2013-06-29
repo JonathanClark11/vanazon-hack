@@ -18,6 +18,7 @@ import com.vanazon.entities.Player;
 import com.vanazon.entities.UpdateState;
 import com.vanazon.graphics.BitmapConfig;
 import com.vanazon.graphics.BitmapFetcher;
+import com.vanazon.manager.DialogueManager;
 import com.vanazon.manager.ObjectManager;
 import com.vanazon.quest.Quest;
 import com.vanazon.sound.MusicPlayer;
@@ -28,6 +29,7 @@ import com.vanazon.manager.BGManager;
 import com.vanazon.utils.GameObjectXML;
 import com.vanazon.utils.XmlLoader;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
@@ -40,12 +42,15 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivityPanel extends SurfaceView implements Callback {
 
 	private MainThread thread;
 	private ObjectManager objManager;
 	private BGManager bgManager;
+	private DialogueManager dManager;
 	private Context context;
 	
 	public MainActivityPanel(Context context) {
@@ -58,6 +63,7 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		//Init variables here
 		objManager = new ObjectManager(context);
 		bgManager = new BGManager();
+		dManager = new DialogueManager();
 
 		Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
 		Player player = new Player(new Vector2D(1000, 700), new Vector2D(20, 20), bmp);
@@ -79,7 +85,6 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		bgManager.setBG(bmp5);
 		
 		Bitmap bmp6 = BitmapFactory.decodeResource(getResources(), R.drawable.garden2_bitmap);
-
 		bgManager.setBGcollide(bmp6);
 
 		//Quest q = new Quest("data/GatsbyEntityData.xml", context.getAssets());
@@ -194,7 +199,16 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 			DialogFragment pmenu = new PauseMenu();
 			pmenu.show(((FragmentActivity) context).getSupportFragmentManager(), "pause");
 		}
-		consumed = objManager.handleInput(event);
+		if (!Global.dialogue) {
+			consumed = objManager.handleInput(event);
+		} else if(dManager.getDisplay() == 0) {
+			dManager.setString(objManager.sendDialogue());
+			renderDialogue();
+		} else if(dManager.getDisplay() == dManager.getStringLen()) {
+			Global.dialogue = false;
+		} else {
+			renderDialogue();
+		}
 		return consumed;
 	}
 
@@ -202,6 +216,14 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		canvas.drawColor(Color.BLACK);
 		bgManager.render(canvas);
 		objManager.renderGameObjects(canvas);
+	}
+	
+	protected void renderDialogue() {
+		final Dialog dialog = new Dialog(context);
+		TextView dialogue = (TextView) dialog.findViewById(R.id.text);
+		String text = dManager.process();
+		dialogue.setText(text);
+		dialog.show();
 	}
 	
 	public void update() {
