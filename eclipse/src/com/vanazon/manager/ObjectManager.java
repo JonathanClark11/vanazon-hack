@@ -75,7 +75,6 @@ public class ObjectManager {
 			if (objectMap.get(obj).collides(player)) {
 				player.handleCollision(objectMap.get(obj));
 				if(objectMap.get(obj).getDialog() != null) {
-					System.out.println(objectMap.get(obj).getDialog().split("/")[0]);
 					DialogueManager.setDialogText(objectMap.get(obj).getDialog().split("/"));
 					DialogueManager.setNpcName(objectMap.get(obj).getId());
 					DialogueManager.showDialogOnNextUpdate = true;
