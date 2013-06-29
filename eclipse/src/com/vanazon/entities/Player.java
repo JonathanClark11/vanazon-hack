@@ -1,6 +1,7 @@
 package com.vanazon.entities;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import com.vanazon.settings.PlayerSettings;
@@ -11,7 +12,7 @@ public class Player extends GameObject implements iInput, iUpdateable {
 	private boolean isMoving;
 	
 	public Player(Vector2D position, Vector2D size, Bitmap bitmap) {
-		super(new Vector2D(0, 0), new Vector2D(0, 0), bitmap);
+		super(position, size, bitmap);
 		velocity = new Vector2D(0, 0);
 		isMoving = false;
 	}
@@ -58,26 +59,46 @@ public class Player extends GameObject implements iInput, iUpdateable {
 		//isMoving = false;
 	}
 	public void handleCollision(Bitmap bmp) {
+		int xl = (int) position.x;
+		int xr = (int) (position.x + size.x);
+		int yb = (int) (position.y + size.y);
+		boolean red = false;
 		Vector2D move = new Vector2D(0, 0);
-		for(int floor = (int) position.x; floor < position.x + size.x; floor++) {
-			if((int) position.y > 0 && floor > 0 &&
-					bmp.getHeight() > (int) position.y && bmp.getWidth() > floor && 
-					bmp.getPixel(floor, (int) position.y) == 0xffff0000) {
-				for(int colorx = floor-1; colorx <= floor+1; floor++) {
-					for(int colory = ((int) position.y)-1; colory <= ((int) position.y)-1; colory++) {
-						if(bmp.getPixel(colorx, colory) == 0xffff0000) {
-							move.x += colorx - floor;
-							move.y += (int) position.y - colory; 
-						}
-					}
+		for(int floor = xl; floor < xr; floor++) {
+			if(yb > 0 && floor > 0 && bmp.getHeight() > yb && bmp.getWidth() > floor && 
+					bmp.getPixel(floor-1, yb-1) == 0xffff0000 ||
+					bmp.getPixel(floor-1, yb) == 0xffff0000 ||
+					bmp.getPixel(floor-1, yb+1) == 0xffff0000 ||	// sorry
+					bmp.getPixel(floor, yb-1) == 0xffff0000 ||
+					bmp.getPixel(floor, yb+1) == 0xffff0000 ||
+					bmp.getPixel(floor+1, yb-1) == 0xffff0000 ||
+					bmp.getPixel(floor+1, yb) == 0xffff0000 ||
+					bmp.getPixel(floor+1, yb+1) == 0xffff0000 ) {
+				if(bmp.getPixel(floor+1, yb-1)==0xffff0000 || bmp.getPixel(floor+1, yb)==0xffff0000 ||
+						bmp.getPixel(floor+1, yb+1)==0xffff0000) {
+					move.x += -1;
+					velocity.x = 0;
 				}
-				move.normalize();
-				this.position.append(move);
-				velocity = new Vector2D(0, 0);
-				return;
+				if(bmp.getPixel(floor-1, yb-1)==0xffff0000 ||
+						bmp.getPixel(floor-1, yb)==0xffff0000 || bmp.getPixel(floor-1, yb+1)==0xffff0000) {
+					move.x += 1;
+					velocity.x = 0;
+				}
+				if(bmp.getPixel(floor-1, yb-1)==0xffff0000 || bmp.getPixel(floor, yb-1)==0xffff0000 ||
+						bmp.getPixel(floor+1, yb-1)==0xffff0000) {
+					move.y += 1;
+					velocity.y = 0;
+				}
+				if(bmp.getPixel(floor-1, yb+1)==0xffff0000 ||
+						bmp.getPixel(floor, yb+1)==0xffff0000 || bmp.getPixel(floor+1, yb+1)==0xffff0000) {
+					move.y += -1;
+					velocity.y = 0;
+				}
 			}
 		}
-		
+		move.normalize();
+		move.scale(PlayerSettings.MOVEMENT_SPEED);
+		position.append(move);
 	}
 
 }

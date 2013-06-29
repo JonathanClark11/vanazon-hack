@@ -25,6 +25,7 @@ public class BGManager {
 	
 	public void render(Canvas canvas) {
 		canvas.drawBitmap(BG, 0, 0, null);
+		canvas.drawBitmap(BGcollide, 0, 0, null);
 	}
 
 }

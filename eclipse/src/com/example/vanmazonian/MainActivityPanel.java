@@ -41,7 +41,7 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		bgManager = new BGManager();
 
 		Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-		Player player = new Player(new Vector2D(20, 20), new Vector2D(50, 50), bmp);
+		Player player = new Player(new Vector2D(400, 600), new Vector2D(20, 20), bmp);
 		objManager.setPlayer(player);
 		
 		Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
@@ -56,10 +56,10 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		NPC obj3 = new NPC(new Vector2D(850, 500), new Vector2D(50, 50), bmp);
 		objManager.addObject(obj3);
 		
-		Bitmap bmp5 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+		Bitmap bmp5 = BitmapFactory.decodeResource(getResources(), R.drawable.garden2);
 		bgManager.setBG(bmp5);
 		
-		Bitmap bmp6 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+		Bitmap bmp6 = BitmapFactory.decodeResource(getResources(), R.drawable.garden2_bitmap);
 		bgManager.setBGcollide(bmp6);
 
 		//Quest q = new Quest("data/GatsbyEntityData.xml", context.getAssets());
@@ -102,13 +102,13 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 
 	protected void render(Canvas canvas) {
 		canvas.drawColor(Color.BLACK);
-		objManager.renderGameObjects(canvas);
 		bgManager.render(canvas);
+		objManager.renderGameObjects(canvas);
 	}
 	
 	public void update() {
-		objManager.updateGameObjects();
 		bgManager.update(objManager);
+		objManager.updateGameObjects();
 	}
 	
 	

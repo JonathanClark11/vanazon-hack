@@ -69,6 +69,7 @@ public class ObjectManager {
 			obj.Render(canvas);
 		}
 		player.Render(canvas);
+		
 	}
 	
 	public boolean handleInput(MotionEvent event) {
