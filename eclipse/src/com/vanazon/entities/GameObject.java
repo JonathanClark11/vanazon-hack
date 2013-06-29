@@ -38,32 +38,8 @@ public class GameObject implements iRenderable, iCollidable {
 	@Override
 	public void Render(Canvas canvas) {
 		canvas.drawBitmap(bitmap, position.x, position.y, null);
-		Paint myPaint = new Paint();
-		myPaint.setColor(Color.BLUE);
-		myPaint.setStrokeWidth(5);
-		float[] pts = new float[16];
-		pts[0] = position.x;
-		pts[1] = position.y;
-		pts[2] = position.x + size.x;
-		pts[3] = position.y;
-		
-		pts[4] = position.x + size.x;
-		pts[5] = position.y + size.y;
-		pts[6] = position.x;
-		pts[7] = position.y + size.y;
-		
-		pts[8] = position.x;
-		pts[9] = position.y;
-		pts[10] = position.x;
-		pts[11] = position.y + size.y;
-		
-		pts[12] = position.x + size.x;
-		pts[13] = position.y;
-		pts[14] = position.x + size.x;
-		pts[15] = position.y + size.y;
 
-		canvas.drawLines(pts, myPaint);
-		this.bbox.Render(canvas);
+//		this.bbox.Render(canvas);
 	}
 
 	@Override
