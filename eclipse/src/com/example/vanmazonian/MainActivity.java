@@ -37,10 +37,8 @@ public class MainActivity extends FragmentActivity implements NoticeDialogListen
 		@Override
 		public void onServiceReady() {
 			System.out.println("AGS ready!.");
-			
 			LeaderboardsClient lbClient = agsGameClient.getLeaderboardsClient();
 			AGResponseHandle<SubmitScoreResponse> handle = lbClient.submitScore("gatsby", 100);
-			System.out.println("Sent score");
 			 
 			// Optional callback to receive notification of success/failure.
 			handle.setCallback(new AGResponseCallback<SubmitScoreResponse>() {
@@ -50,14 +48,16 @@ public class MainActivity extends FragmentActivity implements NoticeDialogListen
 			        if (result.isError()) {
 			            // Add optional error handling here.  Not strictly required
 			            // since retries and on-device request caching are automatic.
+			        	System.out.println("Error completing callback...");
 			        } else {
 			            // Continue game flow.
+			        	System.out.println("Resuming game...");
+			        	Global.pause = false;
 			        }
 			    }
 			});
-			
+			Global.pause = true;
 			lbClient.showLeaderboardsOverlay();
-			
 		}
 
 		@Override
