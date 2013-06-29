@@ -61,18 +61,6 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		Player player = new Player(new Vector2D(450, 500), new Vector2D(20, 20), bmp);
 		objManager.setPlayer(player);
 		
-//		Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-//		NPC obj1 = new NPC(new Vector2D(100, 500), new Vector2D(50, 50), bmp);
-//		objManager.addObject(obj1);
-//		
-//		Bitmap bmp3 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-//		NPC obj2 = new NPC(new Vector2D(500, 200), new Vector2D(50, 50), bmp);
-//		objManager.addObject(obj2);
-//		
-//		Bitmap bmp4 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-//		NPC obj3 = new NPC(new Vector2D(850, 500), new Vector2D(50, 50), bmp);
-//		objManager.addObject(obj3);
-		
 		Bitmap bmp5 = BitmapFactory.decodeResource(getResources(), R.drawable.garden2);
 		bgManager.setBG(bmp5);
 		
@@ -200,8 +188,10 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 			pmenu.show(((FragmentActivity) context).getSupportFragmentManager(), "pause");
 		}
 		if (DialogueManager.showDialogOnNextUpdate == true) {
-			DialogueManager.showDialog(context, DialogueManager.dialogText[0]);
-			DialogueManager.showDialogOnNextUpdate = false;
+			DialogueManager.showDialog(context, DialogueManager.process());
+			if(DialogueManager.getNumberOfPages() == DialogueManager.getPage()) {
+				DialogueManager.showDialogOnNextUpdate = false;
+			}
 		}
 		
 		consumed = objManager.handleInput(event);
@@ -212,17 +202,6 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		canvas.drawColor(Color.BLACK);
 		bgManager.render(canvas);
 		objManager.renderGameObjects(canvas);
-	}
-	
-	protected void renderDialogue() {
-		final Dialog dialog = new Dialog(context);
-		dialog.setContentView(R.layout.dialog);
-		TextView dialogue = (TextView) dialog.findViewById(R.id.text);
-		if (dialogue != null) {
-			String text = dManager.process();
-			dialogue.setText(text);
-			dialog.show();
-		}
 	}
 	
 	public void update() {

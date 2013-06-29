@@ -10,12 +10,12 @@ public class DialogueManager {
 	
 	public static String[] dialogText;
 	public static String npcName;
-	private int page;
+	private static int page;
 	public static boolean showDialogOnNextUpdate = false;
 	public DialogueManager() {
 		page = 0;
 	}
-	private int getPage() {
+	public static int getPage() {
 		return page;
 	}
 	public static int getNumberOfPages() {
@@ -27,8 +27,8 @@ public class DialogueManager {
 	public static void setNpcName(String name) {
 		npcName = name;
 	}
-	public String process() {
-		if(page < this.dialogText.length) {
+	public static String process() {
+		if(page < dialogText.length) {
 			page++;
 			return dialogText[page-1];
 		} else {
@@ -43,8 +43,8 @@ public class DialogueManager {
 		dialog.setTitle(npcName);
 		 
 		// set the custom dialog components - text, image and button
-		TextView content = (TextView) dialog.findViewById(R.id.text);
-		content.setText(dialogText[0]);
+		TextView content = (TextView) dialog.findViewById(R.id.EditText);
+		content.setText(text);
 		
 		if (content != null) {
 			dialog.show();
