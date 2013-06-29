@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>   
+<MAP>
+	<entry>
+	    <id>mapId</id>
+	    <music>raw/balcony</music>
+	    <exitslist>
+	        <exit>
+	            <exitId>exitId1</exitId>
+	            <posX>100</posX>
+	            <posY>300</posY>
+	            <mapId>newMap</mapId>
+	        </exit>
+	    </exitslist>
+	    <wallOverlay>resourceId</wallOverlay>
+	</entry>
+</MAP>

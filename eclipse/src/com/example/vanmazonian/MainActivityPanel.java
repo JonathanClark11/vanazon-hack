@@ -1,45 +1,35 @@
 package com.example.vanmazonian;
 
-import java.io.BufferedInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.xml.sax.ContentHandler;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
+
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.support.v4.app.DialogFragment;
+import android.support.v4.app.FragmentActivity;
+import android.view.MotionEvent;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.view.SurfaceView;
 
 import com.vanazon.entities.Item;
 import com.vanazon.entities.NPC;
 import com.vanazon.entities.Player;
 import com.vanazon.entities.UpdateState;
-import com.vanazon.graphics.BitmapConfig;
-import com.vanazon.graphics.BitmapFetcher;
-import com.vanazon.manager.ObjectManager;
-import com.vanazon.quest.Quest;
-import com.vanazon.sound.MusicPlayer;
-import com.vanazon.sound.SFXPlayer;
-import com.vanazon.utils.XmlHandler;
-import com.vanazon.utils.Vector2D;
 import com.vanazon.manager.BGManager;
+import com.vanazon.manager.ObjectManager;
+import com.vanazon.map.Map;
+import com.vanazon.sound.MusicPlayer;
 import com.vanazon.utils.GameObjectXML;
+import com.vanazon.utils.Vector2D;
+import com.vanazon.utils.XmlHandler;
 import com.vanazon.utils.XmlLoader;
-
-import android.content.Context;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.DialogFragment;
-import android.view.MotionEvent;
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import android.view.SurfaceView;
 
 public class MainActivityPanel extends SurfaceView implements Callback {
 
@@ -90,7 +80,9 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		//SFXPlayer fx = new SFXPlayer(context);
 		//fx.addSound(1, R.raw.bdown);
 		//fx.playLoopedSound(1);
-		MusicPlayer music = new MusicPlayer(context, R.raw.ending);
+		Map maps = new Map("data/GatsbyMaps.xml", context.getAssets());
+		
+		MusicPlayer music = new MusicPlayer(context, R.raw.ending, true);
 		music.startBGMusic();
 	}
 	
