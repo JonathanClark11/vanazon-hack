@@ -19,6 +19,8 @@ import com.vanazon.graphics.BitmapConfig;
 import com.vanazon.graphics.BitmapFetcher;
 import com.vanazon.manager.ObjectManager;
 import com.vanazon.quest.Quest;
+import com.vanazon.sound.MusicPlayer;
+import com.vanazon.sound.SFXPlayer;
 import com.vanazon.utils.XmlHandler;
 import com.vanazon.utils.Vector2D;
 import com.vanazon.manager.BGManager;
@@ -81,6 +83,12 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		
 		loadGameObjectsFromFile(context, "data/GatsbyGameObjects.xml");
 		
+		//Load Music
+		//SFXPlayer fx = new SFXPlayer(context);
+		//fx.addSound(1, R.raw.bdown);
+		//fx.playLoopedSound(1);
+		MusicPlayer music = new MusicPlayer(context, R.raw.ending);
+		music.startBGMusic();
 	}
 	
 	public void loadGameObjectsFromFile(Context context, String filepath) {
