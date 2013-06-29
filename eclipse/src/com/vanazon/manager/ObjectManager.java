@@ -5,18 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
-import android.widget.TextView;
 
-import com.example.vanmazonian.Global;
-import com.example.vanmazonian.R;
 import com.vanazon.entities.GameObject;
 import com.vanazon.entities.Player;
-import com.vanazon.entities.iUpdateable;
 import com.vanazon.entities.iCollidable;
+import com.vanazon.entities.iUpdateable;
 import com.vanazon.quest.Quest;
 
 public class ObjectManager {
@@ -27,12 +23,12 @@ public class ObjectManager {
 	private Context context;
 	Quest q;
 	private String bGName;
-	public ObjectManager(Context context) {
+	public ObjectManager(Context context, String questFilePath) {
 		bGName = "party_entrance";
 		objects = new ArrayList<String>();
 		this.context = context;
 		objectMap = new HashMap<String,GameObject> ();
-		q = new Quest("data/testQuest.xml", context.getAssets());
+		q = new Quest(questFilePath, context.getAssets());
 		objects = q.getObjectLoads("start");
 	}
 	
@@ -53,7 +49,8 @@ public class ObjectManager {
 	
 	public void updateGameObjects() {
 		for(String obj : objects) {
-			if (objectMap.get(obj) instanceof iUpdateable) {
+			if (objectMap.get(obj) instanceof iUpdateable && 
+					(objectMap.get(obj).getMapId().equals(bGName))) {
 				((iUpdateable) objectMap.get(obj)).Update();
 			}
 		}
@@ -63,7 +60,8 @@ public class ObjectManager {
 	
 	public void checkCollisions() {
 		for(String obj : objects) {
-			if (!(objectMap.get(obj) instanceof iCollidable)) {
+			if (!(objectMap.get(obj) instanceof iCollidable) || 
+					!(objectMap.get(obj).getMapId().equals(bGName))) {
 				continue;
 			}
 			for (String obj2 : objects) {
@@ -105,7 +103,7 @@ public class ObjectManager {
 	
 	public void renderGameObjects(Canvas canvas) {
 		for (String obj : objects) {
-			if(objectMap.get(obj).getMapId()==bGName){
+			if(objectMap.get(obj).getMapId().equals(bGName)) {
 				objectMap.get(obj).Render(canvas);
 			}
 		}
