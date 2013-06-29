@@ -14,19 +14,25 @@ public class GameObject implements iRenderable, iCollidable {
 	protected Vector2D size;
 	private BoundingBox bbox;
 	private Bitmap bitmap;
+	private String dialog;
+	private String mapId;
+	private String id;
 	
-	public GameObject(Vector2D position, Vector2D size) {
-		this(position, size, null);
-	}
 	public GameObject(Vector2D position, Vector2D size, Bitmap bitmap) {
-		this(position, size, new BoundingBox(), bitmap);
+		this("", position, size, new BoundingBox(), bitmap, "", "");
 	}
-	public GameObject(Vector2D position, Vector2D size, BoundingBox bbox, Bitmap bitmap) {
+	public GameObject(String id, Vector2D position, Vector2D size, Bitmap bitmap, String dialog, String mapId) {
+		this(id, position, size, new BoundingBox(), bitmap, dialog, mapId);
+	}
+	public GameObject(String id, Vector2D position, Vector2D size, BoundingBox bbox, Bitmap bitmap, String dialog, String mapId) {
+		this.id = id;
 		this.position = position;
 		this.size = size;
 		this.bbox = bbox;
 		this.bbox.position = this.position;
 		this.bitmap = bitmap;
+		this.dialog = dialog;
+		this.mapId = mapId;
 	}
 	
 	@Override
@@ -87,5 +93,14 @@ public class GameObject implements iRenderable, iCollidable {
 	public void setPosition(Vector2D position) {
 		this.position = position;
 		this.bbox.position = position;
+	}
+	public String getId() {
+		return id;
+	}
+	public String getDialog() {
+		return dialog;
+	}
+	public String getMapId() {
+		return mapId;
 	}
 }
