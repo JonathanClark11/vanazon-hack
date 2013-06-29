@@ -52,7 +52,7 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		bgManager = new BGManager();
 
 		Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-		Player player = new Player(new Vector2D(400, 600), new Vector2D(20, 20), bmp);
+		Player player = new Player(new Vector2D(1000, 400), new Vector2D(20, 20), bmp);
 		objManager.setPlayer(player);
 		
 //		Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
@@ -71,6 +71,8 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		bgManager.setBG(bmp5);
 		
 		Bitmap bmp6 = BitmapFactory.decodeResource(getResources(), R.drawable.garden2_bitmap);
+		
+//		Bitmap bmp7 = BitmapFactory.decodeResource(getResources(), R.drawable.);
 
 		bgManager.setBGcollide(bmp6);
 
