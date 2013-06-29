@@ -1,5 +1,7 @@
 package com.example.vanmazonian;
 
+import com.vanazon.entities.UpdateState;
+
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
 

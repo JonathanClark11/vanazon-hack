@@ -15,6 +15,7 @@ import org.xml.sax.XMLReader;
 import com.vanazon.entities.Item;
 import com.vanazon.entities.NPC;
 import com.vanazon.entities.Player;
+import com.vanazon.entities.UpdateState;
 import com.vanazon.graphics.BitmapConfig;
 import com.vanazon.graphics.BitmapFetcher;
 import com.vanazon.manager.ObjectManager;
@@ -189,9 +190,13 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 	}
 	
 	public void update() {
-		bgManager.update(objManager);
+		UpdateState state = bgManager.update(objManager);
 		objManager.updateGameObjects();
+		
+		if(state == UpdateState.UPDATE_BG) {
+			System.out.println("Got the door!");
+			Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+			bgManager.setBG(bmp);
+		}
 	}
-	
-	
 }

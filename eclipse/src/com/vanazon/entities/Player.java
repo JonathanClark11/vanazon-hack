@@ -59,7 +59,7 @@ public class Player extends GameObject implements iInput, iUpdateable {
 		velocity = new Vector2D(0, 0);
 		//isMoving = false;
 	}
-	public void handleCollision(Bitmap bmp) {
+	public UpdateState handleCollision(Bitmap bmp) {
 		int xl = (int) position.x;
 		int xr = (int) (position.x + size.x);
 		int yb = (int) (position.y + size.y);
@@ -71,7 +71,7 @@ public class Player extends GameObject implements iInput, iUpdateable {
 		
 		// Check if player is on bitmap
 		if(!(yb > 0 && xl > 0 && bmp.getHeight() > yb)) {
-			return;
+			return UpdateState.UPDATE_PLAYER;
 		}
 		for(int floor = xl; floor < xr; floor++) {
 			// Check if player is adjacent to a red pixel
@@ -103,12 +103,13 @@ public class Player extends GameObject implements iInput, iUpdateable {
 			if(ColourChecker.isAdjacentToDoor(bmp, floor, yb, greenMask, notGreenMask)) {
 				System.out.println("Got to the door!");
 				// Render next level
-				velocity.y = 10;
+				return UpdateState.UPDATE_BG;
 			}
 		}
 		move.normalize();
 		move.scale(PlayerSettings.MOVEMENT_SPEED);
 		position.append(move);
+		
+		return UpdateState.UPDATE_PLAYER;
 	}
-
 }
