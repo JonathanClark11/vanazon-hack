@@ -95,7 +95,7 @@ public class Player extends GameObject implements iInput, iUpdateable {
 				// Down
 				if(ColourChecker.pixelOnDown(bmp, floor, yb, RED)) {
 					move.y += -1;
-					velocity.y = 0;
+					velocity.y = 0 ;
 				}
 			}
 			
