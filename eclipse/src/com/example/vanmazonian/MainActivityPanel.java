@@ -136,13 +136,11 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 				int resID = context.getResources().getIdentifier(bitmap[i], "drawable", context.getPackageName());
 				Bitmap bmp = BitmapFactory.decodeResource(getResources(), resID);
 				NPC newNPC = new NPC(ids[i], new Vector2D(posX[i], posY[i]), new Vector2D(sizeX[i], sizeY[i]), bmp, dialog[i], mapId[i]);
-				System.out.println(newNPC.position.x);
 				objManager.addObject(newNPC);
 			} else if (types[i].equals("ITEM")) {
 				int resID = context.getResources().getIdentifier(bitmap[i], "drawable", context.getPackageName());
 				Bitmap bmp = BitmapFactory.decodeResource(getResources(), resID);
 				Item newNPC = new Item(ids[i], new Vector2D(posX[i], posY[i]), new Vector2D(sizeX[i], sizeY[i]), bmp, dialog[i], mapId[i]);
-				System.out.println(newNPC.position.x);
 				objManager.addObject(newNPC);
 			}
 		}
