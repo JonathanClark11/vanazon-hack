@@ -70,8 +70,10 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		setFocusable(true);
 		
 		//Init variables here
+		Map maps = new Map("data/GatsbyMaps.xml", context.getAssets());
+		bgManager = new BGManager(maps,getResources(),context);
 		objManager = new ObjectManager(context);
-		bgManager = new BGManager();
+		
 		dManager = new DialogueManager();
 
 		Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
@@ -95,6 +97,8 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		
 		Bitmap bmp6 = BitmapFactory.decodeResource(getResources(), R.drawable.garden2_bitmap);
 		bgManager.setBGcollide(bmp6);
+		
+		bgManager.setBGName("garden2");
 
 		//Quest q = new Quest("data/GatsbyEntityData.xml", context.getAssets());
 		
@@ -108,7 +112,7 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		//SFXPlayer fx = new SFXPlayer(context);
 		//fx.addSound(1, R.raw.bdown);
 		//fx.playLoopedSound(1);
-		Map maps = new Map("data/GatsbyMaps.xml", context.getAssets());
+
 		
 		MusicPlayer music = new MusicPlayer(context, R.raw.ending, true);
 		//music.startBGMusic();
@@ -241,13 +245,12 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 	}
 	
 	public void update() {
-		UpdateState state = bgManager.update(objManager);
 		objManager.updateGameObjects();
-		
-		if(state == UpdateState.UPDATE_BG) {
-			System.out.println("Got the door!");
-			Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-			bgManager.setBG(bmp);
-		}
+		bgManager.update(objManager);
+//		if(state == UpdateState.UPDATE_BG) {
+//			System.out.println("Got the door!");
+//			Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+//			bgManager.setBG(bmp);
+//		}
 	}
 }
