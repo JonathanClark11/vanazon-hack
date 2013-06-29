@@ -1,8 +1,8 @@
 package com.vanazon.graphics;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 
 public class BitmapFetcher {
@@ -10,14 +10,17 @@ public class BitmapFetcher {
 	private HashMap<Integer,Bitmap> mapOfBitmaps;
 	
 	// pass in an array of things to load!
-	public void loadListOfBitmaps(){
+	public void loadListOfBitmaps(ArrayList<BitmapConfig> listOfConfigs){
 		
+		for(BitmapConfig config: listOfConfigs){
+			loadBitmap(config);
+		}
 	}
 	
-	// fetch a bitmap 
-	public void loadBitmap(Resources res, int resId, int reqWidth, int reqHeight){
-		BitmapWorkerTask task = new BitmapWorkerTask(this, res, resId, reqWidth, reqHeight);
-        task.execute(resId);
+	// fetch a single bitmap 
+	public void loadBitmap(BitmapConfig config){
+		BitmapWorkerTask task = new BitmapWorkerTask(this, config);
+        task.execute(config.resId);
 	}
 	
 	// helper for BitmapWorkerTask to return the bitmap loaded
