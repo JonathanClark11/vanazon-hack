@@ -13,7 +13,7 @@ import android.content.res.AssetManager;
 import android.util.Xml;
 
 public class Quest {
-	public HashMap<String,List<String>> changeLoadOnUseObject;
+	HashMap<String,List<String>> changeLoadOnUseObject;
 	HashMap<String,List<String>> changeUnLoadOnUseObject;
 	HashMap<String,List<String>> changeLoadOnUseBip;
 	HashMap<String,List<String>> changeUnLoadOnUseBip;
@@ -37,8 +37,20 @@ public class Quest {
 			//System.out.println("Got XML Pull Parse Error");
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}	
+	}
+	
+	public List<String> getObjectLoads(String s){
+		return changeLoadOnUseObject.get(s);
+	}
+	public List<String> getObjectUnLoads(String s){
+		return changeUnLoadOnUseObject.get(s);
+	}
+	public List<String> getBipLoad(String s){
+		return changeLoadOnUseBip.get(s);
+	}
+	public List<String> getBipUnLoad(String s){
+		return changeUnLoadOnUseBip.get(s);
 	}
 	
     public void parse(InputStream in) throws XmlPullParserException, IOException {

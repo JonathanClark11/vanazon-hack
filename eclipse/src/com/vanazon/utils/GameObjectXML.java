@@ -15,6 +15,16 @@ public class GameObjectXML {
     }
     
     
+    private ArrayList<String> id = new ArrayList<String>();
+    public ArrayList<String> getId() {
+        return id;
+    }
+    public void setId(String id) {
+        this.id.add(id);
+        System.out.println("Item Id:" + id);
+    }
+    
+    
     
 	private ArrayList<Integer> posX = new ArrayList<Integer>();
     public ArrayList<Integer> getPosX() {
@@ -67,6 +77,24 @@ public class GameObjectXML {
     public void setBitmap(String bitmap) {
         this.bitmap.add(bitmap);
         System.out.println("Item Bitmap:" + bitmap);
+    }
+    
+    private ArrayList<String> dialog = new ArrayList<String>();
+    public ArrayList<String> getDialog() {
+        return dialog;
+    }
+    public void setDialog(String dialog) {
+        this.dialog.add(dialog);
+        System.out.println("Item Dialog:" + dialog);
+    }
+    
+    private ArrayList<String> mapId = new ArrayList<String>();
+    public ArrayList<String> getMapId() {
+        return mapId;
+    }
+    public void setMapId(String mapId) {
+        this.mapId.add(mapId);
+        System.out.println("Item MapId:" + mapId);
     }
    
 }

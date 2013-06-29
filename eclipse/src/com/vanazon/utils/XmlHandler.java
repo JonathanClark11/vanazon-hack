@@ -40,6 +40,8 @@ public class XmlHandler extends DefaultHandler {
          * */
         if (localName.equalsIgnoreCase("type"))
             data.setType(elementValue);
+        else if (localName.equalsIgnoreCase("id"))
+            data.setId(elementValue);
         else if (localName.equalsIgnoreCase("posX"))
             data.setPosX(Integer.parseInt(elementValue));
         else if (localName.equalsIgnoreCase("posY"))
@@ -50,6 +52,10 @@ public class XmlHandler extends DefaultHandler {
             data.setSizeY(Integer.parseInt(elementValue));
         else if (localName.equalsIgnoreCase("bitmap"))
             data.setBitmap(elementValue);
+        else if (localName.equalsIgnoreCase("dialog"))
+            data.setDialog(elementValue);
+        else if (localName.equalsIgnoreCase("mapId"))
+            data.setMapId(elementValue);
     }
     /**
      * This is called to get the tags value
