@@ -41,15 +41,15 @@ public class XmlHandler extends DefaultHandler {
         if (localName.equalsIgnoreCase("type"))
             data.setType(elementValue);
         else if (localName.equalsIgnoreCase("posX"))
-            data.setPosX(Integer.getInteger(elementValue));
+            data.setPosX(Integer.parseInt(elementValue));
         else if (localName.equalsIgnoreCase("posY"))
-            data.setPosX(Integer.getInteger(elementValue));
+            data.setPosY(Integer.parseInt(elementValue));
         else if (localName.equalsIgnoreCase("sizeX"))
-            data.setPosX(Integer.getInteger(elementValue));
+            data.setSizeX(Integer.parseInt(elementValue));
         else if (localName.equalsIgnoreCase("sizeY"))
-            data.setPosX(Integer.getInteger(elementValue));
+            data.setSizeY(Integer.parseInt(elementValue));
         else if (localName.equalsIgnoreCase("bitmap"))
-            data.setPosX(Integer.getInteger(elementValue));
+            data.setBitmap(elementValue);
     }
     /**
      * This is called to get the tags value

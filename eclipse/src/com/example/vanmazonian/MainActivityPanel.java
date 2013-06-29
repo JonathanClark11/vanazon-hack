@@ -55,17 +55,17 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		Player player = new Player(new Vector2D(20, 20), new Vector2D(50, 50), bmp);
 		objManager.setPlayer(player);
 		
-		Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-		NPC obj1 = new NPC(new Vector2D(100, 500), new Vector2D(50, 50), bmp);
-		objManager.addObject(obj1);
-		
-		Bitmap bmp3 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-		NPC obj2 = new NPC(new Vector2D(500, 200), new Vector2D(50, 50), bmp);
-		objManager.addObject(obj2);
-		
-		Bitmap bmp4 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-		NPC obj3 = new NPC(new Vector2D(850, 500), new Vector2D(50, 50), bmp);
-		objManager.addObject(obj3);
+//		Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+//		NPC obj1 = new NPC(new Vector2D(100, 500), new Vector2D(50, 50), bmp);
+//		objManager.addObject(obj1);
+//		
+//		Bitmap bmp3 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+//		NPC obj2 = new NPC(new Vector2D(500, 200), new Vector2D(50, 50), bmp);
+//		objManager.addObject(obj2);
+//		
+//		Bitmap bmp4 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+//		NPC obj3 = new NPC(new Vector2D(850, 500), new Vector2D(50, 50), bmp);
+//		objManager.addObject(obj3);
 		
 		Bitmap bmp5 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
 		bgManager.setBG(bmp5);
@@ -75,7 +75,7 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 
 		//Quest q = new Quest("data/GatsbyEntityData.xml", context.getAssets());
 		
-		//loadGameObjectsFromFile(context, "data/GatsbyGameObjects.xml");
+		loadGameObjectsFromFile(context, "data/GatsbyGameObjects.xml");
 		
 	}
 	
@@ -108,25 +108,25 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		sizeX = new Integer[data.getSizeX().size()];
 		sizeY = new Integer[data.getSizeY().size()];
 		bitmap = new String[data.getBitmap().size()];
+
 		for (int i = 0; i < data.getType().size(); i++) {
+			
 			types[i] = data.getType().get(i);
 			posX[i] = data.getPosX().get(i);
 			posY[i] = data.getPosY().get(i);
 			sizeX[i] = data.getSizeX().get(i);
 			sizeY[i] = data.getSizeY().get(i);
 			bitmap[i] = data.getBitmap().get(i);
-			if (types[i] == "PLAYER") {
+
+			if (types[i].equals("PLAYER")) {
 				//Player player = new Player()
-			} else if (types[i] == "NPC") {
-				Bitmap bmp = null;
-				try {
-					bmp = BitmapFactory.decodeStream(new BufferedInputStream(context.getAssets().open(bitmap[i])));
-				} catch (IOException e) {
-					System.out.println("RESOURCE NOT FOUND");
-				}
+			} else if (types[i].equals("NPC")) {
+				int resID = context.getResources().getIdentifier(bitmap[i], "drawable", context.getPackageName());
+				Bitmap bmp = BitmapFactory.decodeResource(getResources(), resID);
 				NPC newNPC = new NPC(new Vector2D(posX[i], posY[i]), new Vector2D(sizeX[i], sizeY[i]), bmp);
+				System.out.println(newNPC.position.x);
 				objManager.addObject(newNPC);
-			} else if (types[i] == "ITEM") {
+			} else if (types[i].equals("ITEM")) {
 				
 			}
 		}
