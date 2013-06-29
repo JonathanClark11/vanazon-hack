@@ -61,13 +61,13 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		Player player = new Player(new Vector2D(450, 500), new Vector2D(20, 20), bmp);
 		objManager.setPlayer(player);
 		
-		Bitmap bmp5 = BitmapFactory.decodeResource(getResources(), R.drawable.garden2);
+		Bitmap bmp5 = BitmapFactory.decodeResource(getResources(), R.drawable.party_entrance);
 		bgManager.setBG(bmp5);
 		
-		Bitmap bmp6 = BitmapFactory.decodeResource(getResources(), R.drawable.garden2_bitmap);
+		Bitmap bmp6 = BitmapFactory.decodeResource(getResources(), R.drawable.party_entrance_bitmap);
 		bgManager.setBGcollide(bmp6);
 		
-		bgManager.setBGName("garden2");
+		bgManager.setBGName("party_entrance");
 
 		//Quest q = new Quest("data/GatsbyEntityData.xml", context.getAssets());
 		

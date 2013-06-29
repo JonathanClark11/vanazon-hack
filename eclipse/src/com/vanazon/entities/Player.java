@@ -1,6 +1,7 @@
 package com.vanazon.entities;
 
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.MotionEvent;
 
@@ -59,14 +60,21 @@ public class Player extends GameObject implements iInput, iUpdateable {
 		velocity = new Vector2D(0, 0);
 		//isMoving = false;
 	}
-	public int handleCollision(Bitmap bmp) {
+	
+	public int handleBitmapCollision(Bitmap bmp) {
+		int col = bmp.getPixel((int)(this.position.x + (this.size.x / 2)), (int)(this.position.y + this.size.y));
+		int red = Color.red(col);
+		int green = Color.green(col);
+		int blue = Color.blue(col);
+		System.out.println("r: " + red + ", g: " + green + ", b: " + blue);
+		
 		int xl = (int) position.x;
 		int xr = (int) (position.x + size.x);
 		int yb = (int) (position.y + size.y);
 		Vector2D move = new Vector2D(0, 0);
 		
 		int RED= 0xffff0000;
-		int greenMask = 0xff00ff00;
+		int greenMask = 0x0000ff00;
 		int notGreenMask = 0x00ff00ff;
 		
 		// Check if player is on bitmap
@@ -98,14 +106,14 @@ public class Player extends GameObject implements iInput, iUpdateable {
 					velocity.y = 0 ;
 				}
 			}
-			
-			// Check if player is adjacent to a green pixel
-			if(ColourChecker.isAdjacentToDoor(bmp, floor, yb, greenMask, notGreenMask)) {
-				System.out.println("Got to the door!");
-				// Render next level
-				int color = bmp.getPixel(floor, yb);
-				return color;
-			}
+			if (green != 0) {
+				return green; 
+				}
+//			if ((greenMask & bmp.getPixel(floor, yb)) != 0) {
+//				int color = bmp.getPixel(floor, yb);
+//				return color;
+//				
+// 			}
 		}
 		move.normalize();
 		move.scale(PlayerSettings.MOVEMENT_SPEED);
