@@ -5,7 +5,8 @@
 		<BipLoad>
 			<id>aLB</id>
 			<id>bLB</id>
-		</BipUnLoad>
+		</BipLoad>
+		<BipUnLoad>
 			<id>aULB</id>
 			<id>bULB</id>
 		</BipUnLoad>
@@ -23,7 +24,8 @@
 		<BipLoad>
 			<id>cLB</id>
 			<id>dLB</id>
-		</BipUnLoad>
+		</BipLoad>
+		<BipUnLoad>
 			<id>cULB</id>
 			<id>dULB</id>
 		</BipUnLoad>
