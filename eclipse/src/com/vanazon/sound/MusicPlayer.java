@@ -10,9 +10,10 @@ import android.media.MediaPlayer;
 public class MusicPlayer {
 	MediaPlayer mplayer;
 	Context context;
-	public MusicPlayer(Context context, int resourceId) {
+	public MusicPlayer(Context context, int resourceId, boolean loop) {
 		this.context = context;
 		mplayer = MediaPlayer.create(context, resourceId);
+		mplayer.setLooping(loop);
 	}
 	public void loadNewResource(int newResourceId) {
 		mplayer = MediaPlayer.create(context, newResourceId);

@@ -9,6 +9,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 
+import com.example.vanmazonian.Global;
 import com.vanazon.entities.GameObject;
 import com.vanazon.entities.Player;
 import com.vanazon.entities.iUpdateable;
@@ -19,6 +20,7 @@ public class ObjectManager {
 	private List<String> objects;
 	public Map<String,GameObject> objectMap;
 	private Player player;
+	private String[] dialogueArray;
 	Quest q;
 	public ObjectManager(Context context) {
 		objects = new ArrayList<String>();
@@ -69,7 +71,11 @@ public class ObjectManager {
 			}
 			if (objectMap.get(obj).collides(player)) {
 				player.handleCollision(objectMap.get(obj));
-				//get
+				if(objectMap.get(obj).getDialog() != null) {
+					Global.dialogue = true;
+					String string = objectMap.get(obj).getDialog();
+					dialogueArray = string.split("|");
+				}
 				List<String> loadS = q.getObjectLoads(obj);
 				List<String> unLoadS = q.getObjectUnLoads(obj);
 				for(String cRenderS: objects){
@@ -84,8 +90,13 @@ public class ObjectManager {
 		}
 	}
 	
+	public String[] sendDialogue() {
+		return dialogueArray;
+	}
+	
 	public void renderGameObjects(Canvas canvas) {
 		for (String obj : objects) {
+			GameObject object = objectMap.get(obj);
 			objectMap.get(obj).Render(canvas);
 		}
 		player.Render(canvas);

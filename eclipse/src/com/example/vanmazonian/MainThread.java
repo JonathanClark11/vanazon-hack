@@ -36,25 +36,30 @@ public class MainThread extends Thread {
 			try {
 				canvas = this.surfaceHolder.lockCanvas();
 				synchronized (surfaceHolder) {
-					begin = System.currentTimeMillis();
-					numSkip = 0;
-					this.gamePanel.update();
-					this.gamePanel.render(canvas);
-					diff = System.currentTimeMillis() - begin;
-					sleep = (int)(FRAME_PERIOD - diff);
-					
-					if (sleep>0) {
-						try {
-							Thread.sleep(sleep);
-						} catch (InterruptedException e) {
-						}
-					}
-					
-					while (sleep < 0 && numSkip < MAX_FRAME_SKIPS) {
+					if(!Global.pause && !Global.dialogue) {
+						begin = System.currentTimeMillis();
+						numSkip = 0;
 						this.gamePanel.update();
-						sleep += FRAME_PERIOD;
-						numSkip++;
-					}
+						this.gamePanel.render(canvas);
+						diff = System.currentTimeMillis() - begin;
+						sleep = (int)(FRAME_PERIOD - diff);
+					
+						if (sleep>0) {
+							try {
+								Thread.sleep(sleep);
+							} catch (InterruptedException e) {
+							}
+						}
+					
+						while (sleep < 0 && numSkip < MAX_FRAME_SKIPS) {
+							this.gamePanel.update();
+							sleep += FRAME_PERIOD;
+							numSkip++;
+						}
+					}/* else if(Global.dialogue) {
+						this.gamePanel.render(canvas);
+						this.gamePanel.renderDialogue();
+					}*/
 				}
 			} finally {
 				if (canvas != null) {

@@ -4,6 +4,7 @@
 		<id>start</id>
 		<ObjectLoad>
 			<id>Jimmy1</id>
+			<id>PauseButton</id>
 		</ObjectLoad>
 	</entry>
 	<entry>

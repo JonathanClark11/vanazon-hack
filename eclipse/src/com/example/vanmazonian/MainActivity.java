@@ -11,13 +11,16 @@ import com.amazon.ags.api.AmazonGamesFeature;
 import com.amazon.ags.api.AmazonGamesStatus;
 import com.amazon.ags.api.leaderboards.LeaderboardsClient;
 import com.amazon.ags.api.leaderboards.SubmitScoreResponse;
+import com.example.vanmazonian.PauseMenu.NoticeDialogListener;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.graphics.Canvas;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.DialogFragment;
 import android.view.Menu;
 
-public class MainActivity extends Activity {
+public class MainActivity extends FragmentActivity implements NoticeDialogListener{
 
 	// We'll initialize this once the application has launched.
 	AmazonGames agsGameClient;
@@ -139,6 +142,16 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
+	}
+	
+	public void showNoticeDialog() {
+		DialogFragment dialog = new PauseMenu();
+		dialog.show(getSupportFragmentManager(), "PauseMenu");
+	}
+
+	public void onNClick(DialogFragment dialog) {
+		Global.pause = false;
+		
 	}
 
 }
