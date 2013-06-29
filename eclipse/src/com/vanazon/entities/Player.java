@@ -1,6 +1,7 @@
 package com.vanazon.entities;
 
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Color;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -9,14 +10,15 @@ import com.vanazon.settings.PlayerSettings;
 import com.vanazon.utils.ColourChecker;
 import com.vanazon.utils.Vector2D;
 
-public class Player extends GameObject implements iInput, iUpdateable {
+public class Player extends GameObject implements iInput, iUpdateable, iRenderable {
 	private Vector2D velocity;
 	private boolean isMoving;
-	
-	public Player(Vector2D position, Vector2D size, Bitmap bitmap) {
-		super(position, size, bitmap);
+	private Bitmap bmp[];
+	public Player(Vector2D position, Vector2D size, Bitmap bitmap[]) {
+		super(position, size, bitmap[0]);
 		velocity = new Vector2D(0, 0);
 		isMoving = false;
+		bmp = bitmap;
 	}
 
 	@Override
@@ -49,6 +51,25 @@ public class Player extends GameObject implements iInput, iUpdateable {
 		if (isMoving == true) {
 			this.movePosition(velocity);
 		}
+	}
+	
+	@Override
+	public void Render(Canvas canvas) {
+		Bitmap bitmap;
+		if (velocity.x < 0 && velocity.y < 0) {
+			//second quad
+			bitmap = bmp[1];
+		} else if (velocity.x > 0 && velocity.y < 0) {
+			//first quad
+			bitmap = bmp[0];
+		} else if (velocity.x < 0 && velocity.y > 0) {
+			//third quad
+			bitmap = bmp[2];
+		} else {
+			//fourth quad
+			bitmap = bmp[3];
+		}
+		canvas.drawBitmap(bitmap, position.x, position.y, null);
 	}
 	
 	public void handleCollision(GameObject obj) {
