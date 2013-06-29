@@ -8,7 +8,7 @@ public class Vector2D {
 		x = 0;
 		y = 0;
 	}
-	public Vector2D(int x, int y) {
+	public Vector2D(float x, float y) {
 		this.x = x;
 		this.y = y;
 	}

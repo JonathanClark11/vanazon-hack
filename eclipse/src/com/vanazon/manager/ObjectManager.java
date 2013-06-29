@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.graphics.Canvas;
+import android.view.MotionEvent;
 
 import com.vanazon.entities.GameObject;
 import com.vanazon.entities.Player;
@@ -38,8 +39,9 @@ public class ObjectManager {
 		}
 	}
 	
-	public void handleInput() {
-		player.handleInput();
+	public void handleInput(MotionEvent event) {
+		//TODO: Check if person pressed an object
+		player.handleInput(event);
 	}
 	
 	public Player getPlayerObject() {
