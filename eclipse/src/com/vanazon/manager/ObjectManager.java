@@ -45,9 +45,9 @@ public class ObjectManager {
 		player.Render(canvas);
 	}
 	
-	public void handleInput(MotionEvent event) {
+	public boolean handleInput(MotionEvent event) {
 		//TODO: Check if person pressed an object
-		player.handleInput(event);
+		return player.handleInput(event);
 	}
 	
 	public Player getPlayerObject() {

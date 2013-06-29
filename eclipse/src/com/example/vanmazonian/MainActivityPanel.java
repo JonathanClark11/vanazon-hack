@@ -8,6 +8,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
@@ -60,14 +61,15 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-		objManager.handleInput(event);
-		if (event.getAction() == MotionEvent.ACTION_DOWN) {
-		
-		}
-		return super.onTouchEvent(event);
+//		System.out.println("event: " + event.getActionMasked());
+		boolean consumed = false;
+		consumed = objManager.handleInput(event);
+		return consumed;
+//		return super.onTouchEvent(event);
 	}
 
 	protected void render(Canvas canvas) {
+		canvas.drawColor(Color.BLACK);
 		objManager.renderGameObjects(canvas);
 	}
 	
