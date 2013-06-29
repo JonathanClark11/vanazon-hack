@@ -87,7 +87,6 @@ public class Player extends GameObject implements iInput, iUpdateable, iRenderab
 		int red = Color.red(col);
 		int green = Color.green(col);
 		int blue = Color.blue(col);
-		System.out.println("r: " + red + ", g: " + green + ", b: " + blue);
 		
 		int xl = (int) position.x;
 		int xr = (int) (position.x + size.x);
