@@ -2,11 +2,25 @@
 <ITEMLIST>
 	<entry>
 	    <type>NPC</type>
+	    <id>Jimmy1</id>
 	    <posX>50</posX>
 	    <posY>60</posY>
 	    <sizeX>50</sizeX>
 	    <sizeY>50</sizeY>
 	    <bitmap>drawable/ic_launcher</bitmap>
+	    <dialog>This is a test dialog</dialog>
+	    <mapId>mapName-1</mapId>
+	</entry>
+	<entry>
+	    <type>NPC</type>
+	    <id>Jimmy2</id>
+	    <posX>50</posX>
+	    <posY>60</posY>
+	    <sizeX>50</sizeX>
+	    <sizeY>50</sizeY>
+	    <bitmap>drawable/ic_launcher</bitmap>
+	    <dialog>This is a test 2 dialog</dialog>
+	    <mapId>mapName-2</mapId>
 	</entry>
 	<entry>
 	    <type>NPC</type>
