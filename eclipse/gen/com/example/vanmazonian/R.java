@@ -17,8 +17,8 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f040000;
-        public static final int activity_vertical_margin=0x7f040001;
+        public static final int activity_horizontal_margin=0x7f050000;
+        public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
         public static final int garden2=0x7f020000;
@@ -27,18 +27,64 @@ public final class R {
         public static final int images=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f080000;
+        public static final int action_settings=0x7f090000;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
     }
     public static final class menu {
-        public static final int main=0x7f070000;
+        public static final int main=0x7f080000;
+    }
+    public static final class raw {
+        public static final int access=0x7f040000;
+        public static final int anzen=0x7f040001;
+        public static final int balcony=0x7f040002;
+        public static final int ballos=0x7f040003;
+        public static final int bdown=0x7f040004;
+        public static final int cemetary=0x7f040005;
+        public static final int creditwii=0x7f040006;
+        public static final int dr=0x7f040007;
+        public static final int ending=0x7f040008;
+        public static final int escape=0x7f040009;
+        public static final int fanfale1=0x7f04000a;
+        public static final int fanfale2=0x7f04000b;
+        public static final int fanfale3=0x7f04000c;
+        public static final int fireeye=0x7f04000d;
+        public static final int gameover=0x7f04000e;
+        public static final int ginsuke=0x7f04000f;
+        public static final int grand=0x7f040010;
+        public static final int gravity=0x7f040011;
+        public static final int hell=0x7f040012;
+        public static final int ika=0x7f040013;
+        public static final int intromenu=0x7f040014;
+        public static final int ironh=0x7f040015;
+        public static final int jenka1=0x7f040016;
+        public static final int jenka1b=0x7f040017;
+        public static final int jenka2=0x7f040018;
+        public static final int kodou=0x7f040019;
+        public static final int lastbtl=0x7f04001a;
+        public static final int lastbtl3=0x7f04001b;
+        public static final int lastcave=0x7f04001c;
+        public static final int marine=0x7f04001d;
+        public static final int maze=0x7f04001e;
+        public static final int mdown2=0x7f04001f;
+        public static final int mura=0x7f040020;
+        public static final int oside=0x7f040021;
+        public static final int plant=0x7f040022;
+        public static final int plantation=0x7f040023;
+        public static final int quiet=0x7f040024;
+        public static final int requiem=0x7f040025;
+        public static final int toroko=0x7f040026;
+        public static final int vivi=0x7f040027;
+        public static final int wanpak2=0x7f040028;
+        public static final int wanpaku=0x7f040029;
+        public static final int weed=0x7f04002a;
+        public static final int zonbie=0x7f04002b;
     }
     public static final class string {
-        public static final int action_settings=0x7f050001;
-        public static final int app_name=0x7f050000;
-        public static final int hello_world=0x7f050002;
+        public static final int action_settings=0x7f060001;
+        public static final int app_name=0x7f060000;
+        public static final int hello_world=0x7f060002;
     }
     public static final class style {
         /** 
@@ -62,10 +108,10 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f060000;
+        public static final int AppBaseTheme=0x7f070000;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f060001;
+        public static final int AppTheme=0x7f070001;
     }
 }
