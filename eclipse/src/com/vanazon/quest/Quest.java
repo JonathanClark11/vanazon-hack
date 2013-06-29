@@ -1,8 +1,5 @@
 package com.vanazon.quest;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -16,7 +13,7 @@ import android.content.res.AssetManager;
 import android.util.Xml;
 
 public class Quest {
-	HashMap<String,List<String>> changeLoadOnUseObject;
+	public HashMap<String,List<String>> changeLoadOnUseObject;
 	HashMap<String,List<String>> changeUnLoadOnUseObject;
 	HashMap<String,List<String>> changeLoadOnUseBip;
 	HashMap<String,List<String>> changeUnLoadOnUseBip;
@@ -30,28 +27,33 @@ public class Quest {
 		InputStream fInput = null;
 		try {
 			fInput = mgr.open(f);
-			XmlPullParser parser = Xml.newPullParser();
-			parser.setInput(fInput, "");
-			parser.nextTag();
-			readFeed(parser);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (XmlPullParserException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
+			parse(fInput);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
+			//System.out.println("Got IO Error");
+			e.printStackTrace();
+		} catch (XmlPullParserException e) {
+			//System.out.println("Got XML Pull Parse Error");
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		finally{
-			try {
-				fInput.close();
-			} catch (IOException e) {
-			}
-		}
+		
 	}
 	
+    public void parse(InputStream in) throws XmlPullParserException, IOException {
+        try {
+            XmlPullParser parser = Xml.newPullParser();
+            parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
+            parser.setInput(in, null);
+            parser.nextTag();
+            //System.out.println("Going onto the Feed parser");
+            readFeed(parser);
+        } finally {
+        	//System.out.println("Finally Close input");
+            in.close();
+        }
+    }
 //	private String readTextFile(InputStream inputStream) {
 //    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 //
@@ -79,6 +81,7 @@ public class Quest {
 	        String name = parser.getName();
 	        // Starts by looking for the entry tag
 	        if (name.equals("entry")) {
+	        	//System.out.println("Got entry");
 	            readEntry(parser);
 	        } else {
 	            skip(parser);
@@ -97,19 +100,25 @@ public class Quest {
 	        }
 	        String name = parser.getName();
 	        if (name.equals("id")) {
+	        	//System.out.println("Got ID");
 	            id = readName(parser);
 	        } else if (name.equals("BipLoad")) {
+	        	//System.out.println("Got BL");
 	            BL = readBL(parser);
 	        } else if (name.equals("BipUnLoad")) {
+	        	//System.out.println("Got BUL");
 	            BUL = readBUL(parser);
 	        }else if (name.equals("ObjectLoad")) {
+	        	//System.out.println("Got OL");
 	            OL = readOL(parser);
 	        }else if (name.equals("ObjectUnLoad")) {
+	        	//System.out.println("Got OUL");
 	            OUL = readOUL(parser);
 	        } else {
 	            skip(parser);
 	        }
 	    }
+	    //System.out.println("Going to be adding");
 	    if(OL!=null){
 		changeLoadOnUseObject.put(id, OL);
 		}
@@ -122,6 +131,7 @@ public class Quest {
 	    if(BUL!=null){
 		changeUnLoadOnUseBip.put(id, BUL);
 	    }
+	    //System.out.println("Succeded in addeding to maps");
 	}
 	private List<String> readOUL(XmlPullParser parser) throws XmlPullParserException, IOException {
 	    parser.require(XmlPullParser.START_TAG, ns, "ObjectUnLoad");
@@ -140,7 +150,7 @@ public class Quest {
 	    return l;
 	}
 	private List<String> readOL(XmlPullParser parser) throws XmlPullParserException, IOException {
-	    parser.require(XmlPullParser.START_TAG, ns, "BipLoad");
+	    parser.require(XmlPullParser.START_TAG, ns, "ObjectLoad");
 	    List<String> l = new ArrayList<String>();
 	    while (parser.next() != XmlPullParser.END_TAG) {
 	        if (parser.getEventType() != XmlPullParser.START_TAG) {

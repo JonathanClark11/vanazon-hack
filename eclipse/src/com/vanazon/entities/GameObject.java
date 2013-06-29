@@ -10,7 +10,7 @@ import com.vanazon.utils.Vector2D;
 import com.vanazon.settings.PlayerSettings;
 
 public class GameObject implements iRenderable, iCollidable {
-	protected Vector2D position;
+	public Vector2D position;
 	protected Vector2D size;
 	private BoundingBox bbox;
 	private Bitmap bitmap;
