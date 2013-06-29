@@ -9,6 +9,8 @@ import com.amazon.ags.api.AmazonGamesCallback;
 import com.amazon.ags.api.AmazonGamesClient;
 import com.amazon.ags.api.AmazonGamesFeature;
 import com.amazon.ags.api.AmazonGamesStatus;
+import com.amazon.ags.api.achievements.AchievementsClient;
+import com.amazon.ags.api.achievements.UpdateProgressResponse;
 import com.amazon.ags.api.leaderboards.LeaderboardsClient;
 import com.amazon.ags.api.leaderboards.SubmitScoreResponse;
 import com.example.vanmazonian.PauseMenu.NoticeDialogListener;
@@ -37,6 +39,28 @@ public class MainActivity extends FragmentActivity implements NoticeDialogListen
 		@Override
 		public void onServiceReady() {
 			System.out.println("AGS ready!.");
+			
+			// Achievement
+			AchievementsClient acClient = agsGameClient.getAchievementsClient();
+			AGResponseHandle<UpdateProgressResponse> handle = acClient.updateProgress("gatsby", 100.0f);
+			   
+			// Optional callback to receive notification of success/failure.
+			handle.setCallback(new AGResponseCallback<UpdateProgressResponse>() {
+			   
+			    @Override
+			    public void onComplete(UpdateProgressResponse result) {
+			        if (result.isError()) {
+			            // Add optional error handling here.  Not strictly required
+			            // since retries and on-device request caching are automatic.
+			        } else {
+			            // Continue game flow.
+			        }
+			    }
+			});
+			
+			acClient.showAchievementsOverlay();
+			
+/*			// Leaderboard
 			LeaderboardsClient lbClient = agsGameClient.getLeaderboardsClient();
 			AGResponseHandle<SubmitScoreResponse> handle = lbClient.submitScore("gatsby", 100);
 			 
@@ -56,8 +80,9 @@ public class MainActivity extends FragmentActivity implements NoticeDialogListen
 			        }
 			    }
 			});
-			Global.pause = true;
+
 			lbClient.showLeaderboardsOverlay();
+*/
 		}
 
 		@Override
