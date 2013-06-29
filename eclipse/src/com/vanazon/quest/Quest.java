@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 
+import android.content.res.AssetManager;
 import android.util.Xml;
 
 public class Quest {
@@ -20,15 +22,14 @@ public class Quest {
 	HashMap<String,List<String>> changeUnLoadOnUseBip;
 	
 
-	public Quest (File f){
+	public Quest (String f, AssetManager mgr){
 		changeLoadOnUseObject = new HashMap<String,List<String>>();
 		changeUnLoadOnUseObject = new HashMap<String,List<String>>();
 		changeLoadOnUseBip = new HashMap<String,List<String>>();
 		changeUnLoadOnUseBip = new HashMap<String,List<String>>();
-		FileInputStream fInput = null;
+		InputStream fInput = null;
 		try {
-			fInput = new FileInputStream(f);
-		
+			fInput = mgr.open(f);
 			XmlPullParser parser = Xml.newPullParser();
 			parser.setInput(fInput, "");
 			parser.nextTag();
@@ -50,6 +51,23 @@ public class Quest {
 			}
 		}
 	}
+	
+//	private String readTextFile(InputStream inputStream) {
+//    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+//
+//    byte buf[] = new byte[1024];
+//    int len;
+//    try {
+//        while ((len = inputStream.read(buf)) != -1) {
+//            outputStream.write(buf, 0, len);
+//        }
+//        outputStream.close();
+//        inputStream.close();
+//    } catch (IOException e) {
+//
+//    }
+//    return outputStream.toString();
+//}
 
 	private static final String ns = null;
 	private void readFeed(XmlPullParser parser) throws XmlPullParserException, IOException {
