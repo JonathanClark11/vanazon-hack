@@ -61,18 +61,6 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		Player player = new Player(new Vector2D(450, 500), new Vector2D(20, 20), bmp);
 		objManager.setPlayer(player);
 		
-//		Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-//		NPC obj1 = new NPC(new Vector2D(100, 500), new Vector2D(50, 50), bmp);
-//		objManager.addObject(obj1);
-//		
-//		Bitmap bmp3 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-//		NPC obj2 = new NPC(new Vector2D(500, 200), new Vector2D(50, 50), bmp);
-//		objManager.addObject(obj2);
-//		
-//		Bitmap bmp4 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-//		NPC obj3 = new NPC(new Vector2D(850, 500), new Vector2D(50, 50), bmp);
-//		objManager.addObject(obj3);
-		
 		Bitmap bmp5 = BitmapFactory.decodeResource(getResources(), R.drawable.garden2);
 		bgManager.setBG(bmp5);
 		
@@ -85,18 +73,12 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		
 		loadGameObjectsFromFile(context, "data/GatsbyGameObjects.xml");
 		Bitmap pauseBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.dock);
-		
 		GameObject pauseBtn = new GameObject("PauseButton", new Vector2D(1100, 0), new Vector2D(100, 100), new BoundingBox(), pauseBitmap, "", "");
 		objManager.addObject(pauseBtn);
 		
-		//Load Music
-		//SFXPlayer fx = new SFXPlayer(context);
-		//fx.addSound(1, R.raw.bdown);
-		//fx.playLoopedSound(1);
-
 		
 		MusicPlayer music = new MusicPlayer(context, R.raw.ending, true);
-		//music.startBGMusic();
+		music.startBGMusic();
 	}
 	
 	public void loadGameObjectsFromFile(Context context, String filepath) {
