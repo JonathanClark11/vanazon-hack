@@ -15,6 +15,7 @@ import org.xml.sax.XMLReader;
 import com.vanazon.entities.Item;
 import com.vanazon.entities.NPC;
 import com.vanazon.entities.Player;
+import com.vanazon.entities.UpdateState;
 import com.vanazon.graphics.BitmapConfig;
 import com.vanazon.graphics.BitmapFetcher;
 import com.vanazon.manager.ObjectManager;
@@ -33,6 +34,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.DialogFragment;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
@@ -43,9 +46,11 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 	private MainThread thread;
 	private ObjectManager objManager;
 	private BGManager bgManager;
+	private Context context;
 	
 	public MainActivityPanel(Context context) {
 		super(context);
+		this.context = context;
 		getHolder().addCallback(this);
 		thread = new MainThread(getHolder(), this);
 		setFocusable(true);
@@ -55,7 +60,7 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		bgManager = new BGManager();
 
 		Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-		Player player = new Player(new Vector2D(1000, 400), new Vector2D(20, 20), bmp);
+		Player player = new Player(new Vector2D(1000, 700), new Vector2D(20, 20), bmp);
 		objManager.setPlayer(player);
 		
 //		Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
@@ -74,8 +79,6 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		bgManager.setBG(bmp5);
 		
 		Bitmap bmp6 = BitmapFactory.decodeResource(getResources(), R.drawable.garden2_bitmap);
-		
-//		Bitmap bmp7 = BitmapFactory.decodeResource(getResources(), R.drawable.);
 
 		bgManager.setBGcollide(bmp6);
 
@@ -186,6 +189,11 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		boolean consumed = false;
+		if (event.getX() >= 1100 && event.getY() <= 100 && !Global.pause) {
+			Global.pause = true;
+			DialogFragment pmenu = new PauseMenu();
+			pmenu.show(((FragmentActivity) context).getSupportFragmentManager(), "pause");
+		}
 		consumed = objManager.handleInput(event);
 		return consumed;
 	}
@@ -197,9 +205,13 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 	}
 	
 	public void update() {
-		bgManager.update(objManager);
+		UpdateState state = bgManager.update(objManager);
 		objManager.updateGameObjects();
+		
+		if(state == UpdateState.UPDATE_BG) {
+			System.out.println("Got the door!");
+			Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+			bgManager.setBG(bmp);
+		}
 	}
-	
-	
 }
