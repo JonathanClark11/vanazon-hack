@@ -26,7 +26,9 @@ public class ObjectManager {
 	private String[] dialogueArray;
 	private Context context;
 	Quest q;
+	private String bGName;
 	public ObjectManager(Context context) {
+		bGName = "party_entrance";
 		objects = new ArrayList<String>();
 		this.context = context;
 		objectMap = new HashMap<String,GameObject> ();
@@ -103,7 +105,9 @@ public class ObjectManager {
 	
 	public void renderGameObjects(Canvas canvas) {
 		for (String obj : objects) {
-			objectMap.get(obj).Render(canvas);
+			if(objectMap.get(obj).getMapId()==bGName){
+				objectMap.get(obj).Render(canvas);
+			}
 		}
 		player.Render(canvas);
 		
@@ -117,5 +121,10 @@ public class ObjectManager {
 	
 	public Player getPlayerObject() {
 		return player;
+	}
+
+	public void setBackGround(String bGName) {
+		this.bGName = bGName;
+		
 	}
 }
