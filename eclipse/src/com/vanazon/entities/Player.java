@@ -57,5 +57,27 @@ public class Player extends GameObject implements iInput, iUpdateable {
 		velocity = new Vector2D(0, 0);
 		//isMoving = false;
 	}
+	public void handleCollision(Bitmap bmp) {
+		Vector2D move = new Vector2D(0, 0);
+		for(int floor = (int) position.x; floor < position.x + size.x; floor++) {
+			if((int) position.y > 0 && floor > 0 &&
+					bmp.getHeight() > (int) position.y && bmp.getWidth() > floor && 
+					bmp.getPixel(floor, (int) position.y) == 0xffff0000) {
+				for(int colorx = floor-1; colorx <= floor+1; floor++) {
+					for(int colory = ((int) position.y)-1; colory <= ((int) position.y)-1; colory++) {
+						if(bmp.getPixel(colorx, colory) == 0xffff0000) {
+							move.x += colorx - floor;
+							move.y += (int) position.y - colory; 
+						}
+					}
+				}
+				move.normalize();
+				this.position.append(move);
+				velocity = new Vector2D(0, 0);
+				return;
+			}
+		}
+		
+	}
 
 }
