@@ -1,6 +1,7 @@
 package com.vanazon.manager;
 
 import com.vanazon.entities.Player;
+import com.vanazon.entities.UpdateState;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -19,8 +20,8 @@ public class BGManager {
 	public void setBGcollide(Bitmap bgcollide) {
 		this.BGcollide = bgcollide;
 	}
-	public void update(ObjectManager obj) {
-		obj.getPlayer().handleCollision(BGcollide);
+	public UpdateState update(ObjectManager obj) {
+		return obj.getPlayer().handleCollision(BGcollide);
 	}
 	
 	public void render(Canvas canvas) {

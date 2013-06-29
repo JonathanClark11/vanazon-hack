@@ -12,12 +12,16 @@ import org.xml.sax.ContentHandler;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
+import com.vanazon.entities.Item;
 import com.vanazon.entities.NPC;
 import com.vanazon.entities.Player;
+import com.vanazon.entities.UpdateState;
 import com.vanazon.graphics.BitmapConfig;
 import com.vanazon.graphics.BitmapFetcher;
 import com.vanazon.manager.ObjectManager;
 import com.vanazon.quest.Quest;
+import com.vanazon.sound.MusicPlayer;
+import com.vanazon.sound.SFXPlayer;
 import com.vanazon.utils.XmlHandler;
 import com.vanazon.utils.Vector2D;
 import com.vanazon.manager.BGManager;
@@ -52,11 +56,11 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		setFocusable(true);
 		
 		//Init variables here
-		objManager = new ObjectManager();
+		objManager = new ObjectManager(context);
 		bgManager = new BGManager();
 
 		Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-		Player player = new Player(new Vector2D(400, 600), new Vector2D(20, 20), bmp);
+		Player player = new Player(new Vector2D(1000, 700), new Vector2D(20, 20), bmp);
 		objManager.setPlayer(player);
 		
 //		Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
@@ -75,12 +79,19 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		bgManager.setBG(bmp5);
 		
 		Bitmap bmp6 = BitmapFactory.decodeResource(getResources(), R.drawable.garden2_bitmap);
+
 		bgManager.setBGcollide(bmp6);
 
 		//Quest q = new Quest("data/GatsbyEntityData.xml", context.getAssets());
 		
 		loadGameObjectsFromFile(context, "data/GatsbyGameObjects.xml");
 		
+		//Load Music
+		//SFXPlayer fx = new SFXPlayer(context);
+		//fx.addSound(1, R.raw.bdown);
+		//fx.playLoopedSound(1);
+		MusicPlayer music = new MusicPlayer(context, R.raw.ending);
+		music.startBGMusic();
 	}
 	
 	public void loadGameObjectsFromFile(Context context, String filepath) {
@@ -101,37 +112,49 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		GameObjectXML data = XmlHandler.data;
 		
 		String types[];
+		String ids[];
 		Integer posX[];
 		Integer posY[];
 		Integer sizeX[];
 		Integer sizeY[];
 		String bitmap[];
+		String dialog[];
+		String mapId[];
 		types = new String[data.getType().size()];
+		ids = new String[data.getId().size()];
 		posX = new Integer[data.getPosX().size()];
 		posY = new Integer[data.getPosY().size()];
 		sizeX = new Integer[data.getSizeX().size()];
 		sizeY = new Integer[data.getSizeY().size()];
 		bitmap = new String[data.getBitmap().size()];
+		dialog = new String[data.getDialog().size()];
+		mapId = new String[data.getMapId().size()];
+
 
 		for (int i = 0; i < data.getType().size(); i++) {
 			
 			types[i] = data.getType().get(i);
+			ids[i] = data.getId().get(i);
 			posX[i] = data.getPosX().get(i);
 			posY[i] = data.getPosY().get(i);
 			sizeX[i] = data.getSizeX().get(i);
 			sizeY[i] = data.getSizeY().get(i);
 			bitmap[i] = data.getBitmap().get(i);
+			dialog[i] = data.getDialog().get(i);
+			mapId[i] = data.getMapId().get(i);
 
 			if (types[i].equals("PLAYER")) {
 				//Player player = new Player()
 			} else if (types[i].equals("NPC")) {
 				int resID = context.getResources().getIdentifier(bitmap[i], "drawable", context.getPackageName());
 				Bitmap bmp = BitmapFactory.decodeResource(getResources(), resID);
-				NPC newNPC = new NPC(new Vector2D(posX[i], posY[i]), new Vector2D(sizeX[i], sizeY[i]), bmp);
-				System.out.println(newNPC.position.x);
+				NPC newNPC = new NPC(ids[i], new Vector2D(posX[i], posY[i]), new Vector2D(sizeX[i], sizeY[i]), bmp, dialog[i], mapId[i]);
 				objManager.addObject(newNPC);
 			} else if (types[i].equals("ITEM")) {
-				
+				int resID = context.getResources().getIdentifier(bitmap[i], "drawable", context.getPackageName());
+				Bitmap bmp = BitmapFactory.decodeResource(getResources(), resID);
+				Item newNPC = new Item(ids[i], new Vector2D(posX[i], posY[i]), new Vector2D(sizeX[i], sizeY[i]), bmp, dialog[i], mapId[i]);
+				objManager.addObject(newNPC);
 			}
 		}
 	}
@@ -182,9 +205,13 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 	}
 	
 	public void update() {
-		bgManager.update(objManager);
+		UpdateState state = bgManager.update(objManager);
 		objManager.updateGameObjects();
+		
+		if(state == UpdateState.UPDATE_BG) {
+			System.out.println("Got the door!");
+			Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+			bgManager.setBG(bmp);
+		}
 	}
-	
-	
 }

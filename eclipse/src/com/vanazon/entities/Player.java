@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 
 import com.vanazon.settings.PlayerSettings;
+import com.vanazon.utils.ColourChecker;
 import com.vanazon.utils.Vector2D;
 
 public class Player extends GameObject implements iInput, iUpdateable {
@@ -58,47 +59,57 @@ public class Player extends GameObject implements iInput, iUpdateable {
 		velocity = new Vector2D(0, 0);
 		//isMoving = false;
 	}
-	public void handleCollision(Bitmap bmp) {
+	public UpdateState handleCollision(Bitmap bmp) {
 		int xl = (int) position.x;
 		int xr = (int) (position.x + size.x);
 		int yb = (int) (position.y + size.y);
-		boolean red = false;
 		Vector2D move = new Vector2D(0, 0);
+		
+		int RED= 0xffff0000;
+		int greenMask = 0xff00ff00;
+		int notGreenMask = 0x00ff00ff;
+		
+		// Check if player is on bitmap
+		if(!(yb > 0 && xl > 0 && bmp.getHeight() > yb)) {
+			return UpdateState.UPDATE_PLAYER;
+		}
 		for(int floor = xl; floor < xr; floor++) {
-			if(yb > 0 && floor > 0 && bmp.getHeight() > yb && bmp.getWidth() > floor && 
-					bmp.getPixel(floor-1, yb-1) == 0xffff0000 ||
-					bmp.getPixel(floor-1, yb) == 0xffff0000 ||
-					bmp.getPixel(floor-1, yb+1) == 0xffff0000 ||	// sorry
-					bmp.getPixel(floor, yb-1) == 0xffff0000 ||
-					bmp.getPixel(floor, yb+1) == 0xffff0000 ||
-					bmp.getPixel(floor+1, yb-1) == 0xffff0000 ||
-					bmp.getPixel(floor+1, yb) == 0xffff0000 ||
-					bmp.getPixel(floor+1, yb+1) == 0xffff0000 ) {
-				if(bmp.getPixel(floor+1, yb-1)==0xffff0000 || bmp.getPixel(floor+1, yb)==0xffff0000 ||
-						bmp.getPixel(floor+1, yb+1)==0xffff0000) {
+			// Check if player is adjacent to a red pixel
+			if(ColourChecker.isAdjacent(bmp, floor, yb, RED)) {
+
+				// Right
+				if(ColourChecker.pixelOnRight(bmp, floor, yb, RED)) {
 					move.x += -1;
 					velocity.x = 0;
 				}
-				if(bmp.getPixel(floor-1, yb-1)==0xffff0000 ||
-						bmp.getPixel(floor-1, yb)==0xffff0000 || bmp.getPixel(floor-1, yb+1)==0xffff0000) {
+				// Left
+				if(ColourChecker.pixelOnLeft(bmp, floor, yb, RED)) {
 					move.x += 1;
 					velocity.x = 0;
 				}
-				if(bmp.getPixel(floor-1, yb-1)==0xffff0000 || bmp.getPixel(floor, yb-1)==0xffff0000 ||
-						bmp.getPixel(floor+1, yb-1)==0xffff0000) {
+				// Up
+				if(ColourChecker.pixelOnUp(bmp, floor, yb, RED)) {
 					move.y += 1;
 					velocity.y = 0;
 				}
-				if(bmp.getPixel(floor-1, yb+1)==0xffff0000 ||
-						bmp.getPixel(floor, yb+1)==0xffff0000 || bmp.getPixel(floor+1, yb+1)==0xffff0000) {
+				// Down
+				if(ColourChecker.pixelOnDown(bmp, floor, yb, RED)) {
 					move.y += -1;
 					velocity.y = 0;
 				}
+			}
+			
+			// Check if player is adjacent to a green pixel
+			if(ColourChecker.isAdjacentToDoor(bmp, floor, yb, greenMask, notGreenMask)) {
+				System.out.println("Got to the door!");
+				// Render next level
+				return UpdateState.UPDATE_BG;
 			}
 		}
 		move.normalize();
 		move.scale(PlayerSettings.MOVEMENT_SPEED);
 		position.append(move);
+		
+		return UpdateState.UPDATE_PLAYER;
 	}
-
 }

@@ -3,16 +3,14 @@
 	<entry>
 		<id>Daisy.questgiver1</id>
 		<BipLoad>
-			<id>aLB</id>
-			<id>bLB</id>
+
 		</BipLoad>
 		<BipUnLoad>
-			<id>aULB</id>
-			<id>bULB</id>
+
 		</BipUnLoad>
 		<ObjectLoad>
 			<id>Daisydefault</id>
-			<id>Jordanquestgiver</id>
+			<id>Jordanquestgiver1</id>
 		</ObjectLoad>
 		<ObjectUnLoad>
 			<id>Daisyquestgiver1</id>
@@ -22,30 +20,26 @@
 	<entry>
 		<id>Jordanquestgiver1</id>
 		<BipLoad>
-			<id>aLB</id>
-			<id>bLB</id>
+
 		</BipLoad>
 		<BipUnLoad>
-			<id>aULB</id>
-			<id>bULB</id>
+
 		</BipUnLoad>
 		<ObjectLoad>
 			<id>Jordanannoyed</id>
 			<id>Purse</id>
 		</ObjectLoad>
 		<ObjectUnLoad>
-			<id>Jordanquestgiver</id>
+			<id>Jordanquestgiver1</id>
 		</ObjectUnLoad>
 	</entry>
 	<entry>
 		<id>Jordanannoyed</id>
 		<BipLoad>
-			<id>aLB</id>
-			<id>bLB</id>
+
 		</BipLoad>
 		<BipUnLoad>
-			<id>aULB</id>
-			<id>bULB</id>
+
 		</BipUnLoad>
 		<ObjectLoad>
 
@@ -57,12 +51,10 @@
 	<entry>
 		<id>Purse</id>
 		<BipLoad>
-			<id>aLB</id>
-			<id>bLB</id>
+
 		</BipLoad>
 		<BipUnLoad>
-			<id>aULB</id>
-			<id>bULB</id>
+
 		</BipUnLoad>
 		<ObjectLoad>
 			<id>Jordanquestgiver2</id>
@@ -75,12 +67,10 @@
 	<entry>
 		<id>Jordanquestgiver2</id>
 		<BipLoad>
-			<id>aLB</id>
-			<id>bLB</id>
+
 		</BipLoad>
 		<BipUnLoad>
-			<id>aULB</id>
-			<id>bULB</id>
+
 		</BipUnLoad>
 		<ObjectLoad>
 			<id>Jordandefault</id>
@@ -94,12 +84,10 @@
 	<entry>
 		<id>NickCarrawayquestgiver</id>
 		<BipLoad>
-			<id>aLB</id>
-			<id>bLB</id>
+
 		</BipLoad>
 		<BipUnLoad>
-			<id>aULB</id>
-			<id>bULB</id>
+
 		</BipUnLoad>
 		<ObjectLoad>
 			<id>NickCarrawaydefault</id>
@@ -112,12 +100,10 @@
 	<entry>
 		<id>JayGatsbyquestgiver</id>
 		<BipLoad>
-			<id>aLB</id>
-			<id>bLB</id>
+
 		</BipLoad>
 		<BipUnLoad>
-			<id>aULB</id>
-			<id>bULB</id>
+
 		</BipUnLoad>
 		<ObjectLoad>
 			<id>JayGatsbyannoyed</id>
@@ -131,12 +117,10 @@
 	<entry>
 		<id>Daisyquestgiver2</id>
 		<BipLoad>
-			<id>aLB</id>
-			<id>bLB</id>
+
 		</BipLoad>
 		<BipUnLoad>
-			<id>aULB</id>
-			<id>bULB</id>
+
 		</BipUnLoad>
 		<ObjectLoad>
 			<id>Daisydefault</id>
@@ -149,12 +133,10 @@
 	<entry>
 		<id>LibraryManquestgiver</id>
 		<BipLoad>
-			<id>aLB</id>
-			<id>bLB</id>
+
 		</BipLoad>
 		<BipUnLoad>
-			<id>aULB</id>
-			<id>bULB</id>
+
 		</BipUnLoad>
 		<ObjectLoad>
 			<id>LibraryMandefault</id>
@@ -165,20 +147,18 @@
 		</ObjectUnLoad>
 	</entry>
 	<entry>
-		<id>EnderGamebook</id>
+		<id>TheGreatGatsbybook</id>
 		<BipLoad>
-			<id>aLB</id>
-			<id>bLB</id>
+
 		</BipLoad>
 		<BipUnLoad>
-			<id>aULB</id>
-			<id>bULB</id>
+
 		</BipUnLoad>
 		<ObjectLoad>
 			<!--need to put all the enders game entities here -->
 		</ObjectLoad>
 		<ObjectUnLoad>
-			<id>EndersGamebook</id>
+			<id>TheGreatGatsbybook</id>
 			<id>LibraryMandefault</id>
 			<id>Daisydefault</id>
 			<id>JayGatsbydefault</id>
@@ -189,12 +169,10 @@
 	<entry>
 		<id>NPC1</id>
 		<BipLoad>
-			<id>aLB</id>
-			<id>bLB</id>
+
 		</BipLoad>
 		<BipUnLoad>
-			<id>aULB</id>
-			<id>bULB</id>
+
 		</BipUnLoad>
 		<ObjectLoad>
 		</ObjectLoad>
@@ -205,12 +183,10 @@
 	<entry>
 		<id>NPC2</id>
 		<BipLoad>
-			<id>aLB</id>
-			<id>bLB</id>
+
 		</BipLoad>
 		<BipUnLoad>
-			<id>aULB</id>
-			<id>bULB</id>
+
 		</BipUnLoad>
 		<ObjectLoad>
 		</ObjectLoad>
@@ -221,12 +197,10 @@
 	<entry>
 		<id>NPC3</id>
 		<BipLoad>
-			<id>aLB</id>
-			<id>bLB</id>
+
 		</BipLoad>
 		<BipUnLoad>
-			<id>aULB</id>
-			<id>bULB</id>
+
 		</BipUnLoad>
 		<ObjectLoad>
 		</ObjectLoad>
@@ -237,12 +211,10 @@
 	<entry>
 		<id>Daisydefault</id>
 		<BipLoad>
-			<id>aLB</id>
-			<id>bLB</id>
+
 		</BipLoad>
 		<BipUnLoad>
-			<id>aULB</id>
-			<id>bULB</id>
+
 		</BipUnLoad>
 		<ObjectLoad>
 		</ObjectLoad>
@@ -253,12 +225,10 @@
 	<entry>
 		<id>Jordandefault</id>
 		<BipLoad>
-			<id>aLB</id>
-			<id>bLB</id>
+
 		</BipLoad>
 		<BipUnLoad>
-			<id>aULB</id>
-			<id>bULB</id>
+
 		</BipUnLoad>
 		<ObjectLoad>
 		</ObjectLoad>
@@ -269,12 +239,10 @@
 	<entry>
 		<id>NickCarrawaydefault</id>
 		<BipLoad>
-			<id>aLB</id>
-			<id>bLB</id>
+
 		</BipLoad>
 		<BipUnLoad>
-			<id>aULB</id>
-			<id>bULB</id>
+
 		</BipUnLoad>
 		<ObjectLoad>
 		</ObjectLoad>
@@ -285,12 +253,10 @@
 	<entry>
 		<id>JayGatsbydefault</id>
 		<BipLoad>
-			<id>aLB</id>
-			<id>bLB</id>
+
 		</BipLoad>
 		<BipUnLoad>
-			<id>aULB</id>
-			<id>bULB</id>
+
 		</BipUnLoad>
 		<ObjectLoad>
 		</ObjectLoad>
@@ -301,12 +267,10 @@
 	<entry>
 		<id>LibraryMandefault</id>
 		<BipLoad>
-			<id>aLB</id>
-			<id>bLB</id>
+
 		</BipLoad>
 		<BipUnLoad>
-			<id>aULB</id>
-			<id>bULB</id>
+
 		</BipUnLoad>
 		<ObjectLoad>
 		</ObjectLoad>
