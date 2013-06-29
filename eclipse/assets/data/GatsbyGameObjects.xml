@@ -8,7 +8,7 @@
 	    <sizeX>50</sizeX>
 	    <sizeY>50</sizeY>
 	    <bitmap>ic_launcher</bitmap>
-	    <dialog>Hello! Oh you're new here? You know Jay Gatsby? | I live on the other side of the water… in the East Egg. | If you're not too busy can you help me find my friend Jordan?</dialog>
+	    <dialog>Hello! Oh you're new here? You know Jay Gatsby? / I live on the other side of the water… in the East Egg. / If you're not too busy can you help me find my friend Jordan?</dialog>
 	    <mapId>party_entrance</mapId>
 	</entry>
 	<entry>
@@ -30,7 +30,7 @@
 	    <sizeX>50</sizeX>
 	    <sizeY>50</sizeY>
 	    <bitmap>drawable/ic_launcher</bitmap>
-	    <dialog>Mr. Gatsby wants to see me? Oh I'll go see him right now! | Do you mind going to Mr. Gatsby's library and finding a good book for me? I've been wanting to read something new.</dialog>
+	    <dialog>Mr. Gatsby wants to see me? Oh I'll go see him right now! / Do you mind going to Mr. Gatsby's library and finding a good book for me? I've been wanting to read something new.</dialog>
 	    <mapId>hallways_party_exit</mapId>
 	</entry>
 	<entry>
@@ -52,7 +52,7 @@
 	    <sizeX>50</sizeX>
 	    <sizeY>50</sizeY>
 	    <bitmap>drawable/ic_launcher</bitmap>
-	    <dialog>Hello! Good to meet you. Oh you know Mr. Gatsby? | He's so handsome!  | Oh Daisy wants to talk to me? Well, I'm sort of preoccupied at the moment… | I'll tell you what, I lost my purse somewhere… if you find it for me, I'll go talk to Daisy.</dialog>
+	    <dialog>Hello! Good to meet you. Oh you know Mr. Gatsby? / He's so handsome!  / Oh Daisy wants to talk to me? Well, I'm sort of preoccupied at the moment… / I'll tell you what, I lost my purse somewhere… if you find it for me, I'll go talk to Daisy.</dialog>
 	    <mapId>hallway_garden_exit</mapId>
 	</entry>
 	<entry>
@@ -74,7 +74,7 @@
 	    <sizeX>50</sizeX>
 	    <sizeY>50</sizeY>
 	    <bitmap>drawable/ic_launcher</bitmap>
-	    <dialog>Thank you for finding my purse! Now to go see why Daisy wanted to talk to me…  |  You should go find Nick Carraway, he might be able to tell you more about Mr. Gatsby than I.</dialog>
+	    <dialog>Thank you for finding my purse! Now to go see why Daisy wanted to talk to me…  /  You should go find Nick Carraway, he might be able to tell you more about Mr. Gatsby than I.</dialog>
 	    <mapId>hallway_garden_exit</mapId>
 	</entry>
 
@@ -108,7 +108,7 @@
 	    <sizeX>50</sizeX>
 	    <sizeY>50</sizeY>
 	    <bitmap>drawable/ic_launcher</bitmap>
-	    <dialog>Why hello! Oh you're new here? I'm new as well, I just moved in next door… What's your occupation?  |  Oh you're in publishing! Mr. Gatsby has an impressive collection of books, you should go talk to him about it. He should be out by the docks...</dialog>
+	    <dialog>Why hello! Oh you're new here? I'm new as well, I just moved in next door… What's your occupation?  /  Oh you're in publishing! Mr. Gatsby has an impressive collection of books, you should go talk to him about it. He should be out by the docks...</dialog>
 	    <mapId>interior</mapId>
 	</entry>
 	<entry>
@@ -119,7 +119,7 @@
 	    <sizeX>50</sizeX>
 	    <sizeY>50</sizeY>
 	    <bitmap>drawable/ic_launcher</bitmap>
-	    <dialog>Why hello Old Sport! I haven't seen you around here before… I hope you're enjoying my party. | Oh Nick sent you my way to talk about books? Well… umm …  | You should eventually check out my library, old sport, it's filled with them.  | Oh so you've met Daisy? She's a great friend of mine, you can see her home across the bay… | She has a green light that burns all night at the end of her dock…. | Can you find Daisy and tell her to come find me? Thanks old sport.</dialog>
+	    <dialog>Why hello Old Sport! I haven't seen you around here before… I hope you're enjoying my party. / Oh Nick sent you my way to talk about books? Well… umm …  / You should eventually check out my library, old sport, it's filled with them.  / Oh so you've met Daisy? She's a great friend of mine, you can see her home across the bay… / She has a green light that burns all night at the end of her dock…. / Can you find Daisy and tell her to come find me? Thanks old sport.</dialog>
 	    <mapId>dock_night</mapId>
 	</entry>
 	<entry>
@@ -141,7 +141,7 @@
 	    <sizeX>50</sizeX>
 	    <sizeY>50</sizeY>
 	    <bitmap>drawable/ic_launcher</bitmap>
-	    <dialog>Wow, look at all these books! What an amazing display!  | Look at this one, it's a bona-fide piece of printed matter. It fooled me. This fella's a regular Belasco. It's a triumph. What thoroughness! What realism! Knew when to stop, too - didn't cut the pages. But what do you want? What do you expect? | Oh you're looking for a book? That one over there, it looks like a good book.</dialog>
+	    <dialog>Wow, look at all these books! What an amazing display!  / Look at this one, it's a bona-fide piece of printed matter. It fooled me. This fella's a regular Belasco. It's a triumph. What thoroughness! What realism! Knew when to stop, too - didn't cut the pages. But what do you want? What do you expect? / Oh you're looking for a book? That one over there, it looks like a good book.</dialog>
 	    <mapId>library</mapId>
 	</entry>
 	<entry>
