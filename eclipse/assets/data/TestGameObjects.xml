@@ -8,7 +8,7 @@
 	    <sizeX>50</sizeX>
 	    <sizeY>50</sizeY>
 	    <bitmap>drawable/ic_launcher</bitmap>
-	    <dialog>Hello! Oh you're new here? You know Jay Gatsby? | I live on the other side of the water… in the East Egg. | If you're not too busy can you help me find my friend Jordan?</dialog>
+	    <dialog>Hello! Oh you're new here? You know Jay Gatsby? / I live on the other side of the water… in the East Egg. / If you're not too busy can you help me find my friend Jordan?/</dialog>
 	    <mapId>hallways_party_exit</mapId>
 	</entry>
 	<entry>
@@ -19,7 +19,7 @@
 	    <sizeX>50</sizeX>
 	    <sizeY>50</sizeY>
 	    <bitmap>drawable/ic_launcher</bitmap>
-	    <dialog></dialog>
+	    <dialog>newDialog</dialog>
 	    <mapId>hallways_party_exit</mapId>
 	</entry>
 </ITEMLIST>
