@@ -76,9 +76,9 @@ public class ObjectManager {
 					if (unLoadS.contains(cRenderS)){
 						objects.remove(cRenderS);
 					}
-					if (loadS.contains(cRenderS)){
-						objects.add(cRenderS);
-					}
+				}
+				for(String item : loadS) {
+					objects.add(item);
 				}
 			}
 		}
