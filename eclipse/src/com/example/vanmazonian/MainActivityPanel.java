@@ -58,10 +58,10 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		dManager = new DialogueManager();
 
 		Bitmap bmp[] = new Bitmap[4];
-		bmp[0] = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-		bmp[1] = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-		bmp[2] = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-		bmp[3] = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+		bmp[0] = BitmapFactory.decodeResource(getResources(), R.drawable.peccy_br);
+		bmp[1] = BitmapFactory.decodeResource(getResources(), R.drawable.peccy_bl);
+		bmp[2] = BitmapFactory.decodeResource(getResources(), R.drawable.peccy_fl);
+		bmp[3] = BitmapFactory.decodeResource(getResources(), R.drawable.peccy_fr);
 		Player player = new Player(new Vector2D(450, 500), new Vector2D(20, 20), bmp);
 		objManager.setPlayer(player);
 		
