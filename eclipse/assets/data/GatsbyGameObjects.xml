@@ -3,8 +3,8 @@
 	<entry>
 	    <type>NPC</type>
 	    <id>Jimmy1</id>
-	    <posX>50</posX>
-	    <posY>60</posY>
+	    <posX>400</posX>
+	    <posY>400</posY>
 	    <sizeX>50</sizeX>
 	    <sizeY>50</sizeY>
 	    <bitmap>drawable/ic_launcher</bitmap>
@@ -14,36 +14,12 @@
 	<entry>
 	    <type>NPC</type>
 	    <id>Jimmy2</id>
-	    <posX>50</posX>
-	    <posY>60</posY>
+	    <posX>130</posX>
+	    <posY>90</posY>
 	    <sizeX>50</sizeX>
 	    <sizeY>50</sizeY>
 	    <bitmap>drawable/ic_launcher</bitmap>
 	    <dialog>This is a test 2 dialog</dialog>
 	    <mapId>mapName-2</mapId>
-	</entry>
-	<entry>
-	    <type>NPC</type>
-	    <posX>120</posX>
-	    <posY>300</posY>
-	    <sizeX>50</sizeX>
-	    <sizeY>50</sizeY>
-	    <bitmap>drawable/ic_launcher</bitmap>
-	</entry>
-	<entry>
-	    <type>NPC</type>
-	    <posX>800</posX>
-	    <posY>500</posY>
-	    <sizeX>50</sizeX>
-	    <sizeY>50</sizeY>
-	    <bitmap>drawable/ic_launcher</bitmap>
-	</entry>
-	<entry>
-	    <type>NPC</type>
-	    <posX>900</posX>
-	    <posY>300</posY>
-	    <sizeX>50</sizeX>
-	    <sizeY>50</sizeY>
-	    <bitmap>drawable/ic_launcher</bitmap>
 	</entry>
 </ITEMLIST>
