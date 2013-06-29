@@ -6,6 +6,7 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,39 +18,19 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
+import android.widget.TextView;
 
 import com.vanazon.entities.GameObject;
 import com.vanazon.entities.Item;
 import com.vanazon.entities.NPC;
 import com.vanazon.entities.Player;
-import com.vanazon.entities.UpdateState;
-import com.vanazon.graphics.BitmapConfig;
-import com.vanazon.graphics.BitmapFetcher;
-import com.vanazon.manager.DialogueManager;
 import com.vanazon.manager.BGManager;
+import com.vanazon.manager.DialogueManager;
 import com.vanazon.manager.ObjectManager;
 import com.vanazon.map.Map;
 import com.vanazon.sound.MusicPlayer;
-import com.vanazon.utils.GameObjectXML;
-import com.vanazon.utils.XmlLoader;
-
-import android.app.Dialog;
-import android.content.Context;
-import android.content.res.AssetManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.DialogFragment;
-import android.view.MotionEvent;
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import android.view.SurfaceView;
-import android.widget.EditText;
-import android.widget.TextView;
-
 import com.vanazon.utils.BoundingBox;
+import com.vanazon.utils.GameObjectXML;
 import com.vanazon.utils.Vector2D;
 import com.vanazon.utils.XmlHandler;
 import com.vanazon.utils.XmlLoader;
@@ -72,7 +53,7 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		//Init variables here
 		Map maps = new Map("data/GatsbyMaps.xml", context.getAssets());
 		bgManager = new BGManager(maps,getResources(),context);
-		objManager = new ObjectManager(context);
+		objManager = new ObjectManager(context, "data/GatsbyEntityData.xml");
 		
 		dManager = new DialogueManager();
 
@@ -102,9 +83,9 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 
 		//Quest q = new Quest("data/GatsbyEntityData.xml", context.getAssets());
 		
-		loadGameObjectsFromFile(context, "data/TestGameObjects.xml");
+		loadGameObjectsFromFile(context, "data/GatsbyGameObjects.xml");
 		Bitmap pauseBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.pause_button);
-		
+
 		GameObject pauseBtn = new GameObject("PauseButton", new Vector2D(1100, 0), new Vector2D(100, 100), new BoundingBox(), pauseBitmap, "", "");
 		objManager.addObject(pauseBtn);
 		
