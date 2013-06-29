@@ -30,6 +30,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.DialogFragment;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
@@ -40,9 +42,11 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 	private MainThread thread;
 	private ObjectManager objManager;
 	private BGManager bgManager;
+	private Context context;
 	
 	public MainActivityPanel(Context context) {
 		super(context);
+		this.context = context;
 		getHolder().addCallback(this);
 		thread = new MainThread(getHolder(), this);
 		setFocusable(true);
@@ -71,7 +75,6 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		bgManager.setBG(bmp5);
 		
 		Bitmap bmp6 = BitmapFactory.decodeResource(getResources(), R.drawable.garden2_bitmap);
-
 		bgManager.setBGcollide(bmp6);
 
 		//Quest q = new Quest("data/GatsbyEntityData.xml", context.getAssets());
@@ -163,6 +166,11 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		boolean consumed = false;
+		if (event.getX() >= 1100 && event.getY() <= 100 && !Global.pause) {
+			Global.pause = true;
+			DialogFragment pmenu = new PauseMenu();
+			pmenu.show(((FragmentActivity) context).getSupportFragmentManager(), "pause");
+		}
 		consumed = objManager.handleInput(event);
 		return consumed;
 	}

@@ -4,5 +4,7 @@
     <string name="app_name">Vanmazonian</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="resume">Resume</string>
+    <string name="pause">Paused!</string>
 
 </resources>
