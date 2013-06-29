@@ -12,6 +12,7 @@ import org.xml.sax.ContentHandler;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
+import com.vanazon.entities.Item;
 import com.vanazon.entities.NPC;
 import com.vanazon.entities.Player;
 import com.vanazon.graphics.BitmapConfig;
@@ -138,7 +139,11 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 				System.out.println(newNPC.position.x);
 				objManager.addObject(newNPC);
 			} else if (types[i].equals("ITEM")) {
-				
+				int resID = context.getResources().getIdentifier(bitmap[i], "drawable", context.getPackageName());
+				Bitmap bmp = BitmapFactory.decodeResource(getResources(), resID);
+				Item newNPC = new Item(ids[i], new Vector2D(posX[i], posY[i]), new Vector2D(sizeX[i], sizeY[i]), bmp, dialog[i], mapId[i]);
+				System.out.println(newNPC.position.x);
+				objManager.addObject(newNPC);
 			}
 		}
 	}
