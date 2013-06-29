@@ -10,9 +10,17 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(new MainActivityPanel(this));
 	}
 	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
 	
+	@Override
+	protected void onStop() {
+		super.onStop();
+	}
 
 }
