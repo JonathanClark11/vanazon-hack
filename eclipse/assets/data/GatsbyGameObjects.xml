@@ -163,6 +163,7 @@
 	    <sizeX>100</sizeX>
 	    <sizeY>100</sizeY>
 	    <bitmap></bitmap>
+	    <dialog></dialog>
 	    <mapId>all</mapId>
 	</entry>
 	
