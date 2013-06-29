@@ -2,34 +2,67 @@ package com.vanazon.entities;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 
 import com.vanazon.utils.BoundingBox;
 import com.vanazon.utils.Vector2D;
 import com.vanazon.settings.PlayerSettings;
 
 public class GameObject implements iRenderable, iCollidable {
-	protected Vector2D position;
+	public Vector2D position;
 	protected Vector2D size;
 	private BoundingBox bbox;
 	private Bitmap bitmap;
+	private String dialog;
+	private String mapId;
+	private String id;
 	
-	public GameObject(Vector2D position, Vector2D size) {
-		this(position, size, null);
-	}
 	public GameObject(Vector2D position, Vector2D size, Bitmap bitmap) {
-		this(position, size, new BoundingBox(), bitmap);
+		this("", position, size, new BoundingBox(), bitmap, "", "");
 	}
-	public GameObject(Vector2D position, Vector2D size, BoundingBox bbox, Bitmap bitmap) {
+	public GameObject(String id, Vector2D position, Vector2D size, Bitmap bitmap, String dialog, String mapId) {
+		this(id, position, size, new BoundingBox(), bitmap, dialog, mapId);
+	}
+	public GameObject(String id, Vector2D position, Vector2D size, BoundingBox bbox, Bitmap bitmap, String dialog, String mapId) {
+		this.id = id;
 		this.position = position;
 		this.size = size;
 		this.bbox = bbox;
 		this.bbox.position = this.position;
 		this.bitmap = bitmap;
+		this.dialog = dialog;
+		this.mapId = mapId;
 	}
 	
 	@Override
 	public void Render(Canvas canvas) {
 		canvas.drawBitmap(bitmap, position.x, position.y, null);
+		Paint myPaint = new Paint();
+		myPaint.setColor(Color.BLUE);
+		myPaint.setStrokeWidth(5);
+		float[] pts = new float[16];
+		pts[0] = position.x;
+		pts[1] = position.y;
+		pts[2] = position.x + size.x;
+		pts[3] = position.y;
+		
+		pts[4] = position.x + size.x;
+		pts[5] = position.y + size.y;
+		pts[6] = position.x;
+		pts[7] = position.y + size.y;
+		
+		pts[8] = position.x;
+		pts[9] = position.y;
+		pts[10] = position.x;
+		pts[11] = position.y + size.y;
+		
+		pts[12] = position.x + size.x;
+		pts[13] = position.y;
+		pts[14] = position.x + size.x;
+		pts[15] = position.y + size.y;
+
+		canvas.drawLines(pts, myPaint);
 		this.bbox.Render(canvas);
 	}
 
@@ -60,5 +93,14 @@ public class GameObject implements iRenderable, iCollidable {
 	public void setPosition(Vector2D position) {
 		this.position = position;
 		this.bbox.position = position;
+	}
+	public String getId() {
+		return id;
+	}
+	public String getDialog() {
+		return dialog;
+	}
+	public String getMapId() {
+		return mapId;
 	}
 }

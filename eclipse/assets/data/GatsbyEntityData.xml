@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?> 
-<feed xmlns="http://www.w3.org/2005/Atom" xmlns:creativeCommons="http://backend.userland.com/creativeCommonsRssModule" ...">     
+<feed>
 	<entry>
 		<id>Daisy.questgiver1</id>
 		<BipLoad>
@@ -11,16 +11,16 @@
 			<id>bULB</id>
 		</BipUnLoad>
 		<ObjectLoad>
-			<id>Daisy.default</id>
-			<id>Jordan.questgiver</id>
+			<id>Daisydefault</id>
+			<id>Jordanquestgiver</id>
 		</ObjectLoad>
 		<ObjectUnLoad>
-			<id>Daisy.questgiver1</id>
-			<id>Jordan.default</id>
+			<id>Daisyquestgiver1</id>
+			<id>Jordandefault</id>
 		</ObjectUnLoad>
 	</entry>
 	<entry>
-		<id>Jordan.questgiver1</id>
+		<id>Jordanquestgiver1</id>
 		<BipLoad>
 			<id>aLB</id>
 			<id>bLB</id>
@@ -30,15 +30,15 @@
 			<id>bULB</id>
 		</BipUnLoad>
 		<ObjectLoad>
-			<id>Jordan.annoyed</id>
+			<id>Jordanannoyed</id>
 			<id>Purse</id>
 		</ObjectLoad>
 		<ObjectUnLoad>
-			<id>Jordan.questgiver</id>
+			<id>Jordanquestgiver</id>
 		</ObjectUnLoad>
 	</entry>
 	<entry>
-		<id>Jordan.annoyed</id>
+		<id>Jordanannoyed</id>
 		<BipLoad>
 			<id>aLB</id>
 			<id>bLB</id>
@@ -65,15 +65,15 @@
 			<id>bULB</id>
 		</BipUnLoad>
 		<ObjectLoad>
-			<id>Jordan.questgiver2</id>
+			<id>Jordanquestgiver2</id>
 		</ObjectLoad>
 		<ObjectUnLoad>
 			<id>Purse</id>
-			<id>Jordan.annoyed</id>
+			<id>Jordanannoyed</id>
 		</ObjectUnLoad>
 	</entry>
 	<entry>
-		<id>Jordan.questgiver2</id>
+		<id>Jordanquestgiver2</id>
 		<BipLoad>
 			<id>aLB</id>
 			<id>bLB</id>
@@ -83,16 +83,16 @@
 			<id>bULB</id>
 		</BipUnLoad>
 		<ObjectLoad>
-			<id>Jordan.default</id>
-			<id>Daisy.default</id>
-			<id>NickCarraway.questgiver</id>
+			<id>Jordandefault</id>
+			<id>Daisydefault</id>
+			<id>NickCarrawayquestgiver</id>
 		</ObjectLoad>
 		<ObjectUnLoad>
-			<id>Jordan.questgiver2</id>
+			<id>Jordanquestgiver2</id>
 		</ObjectUnLoad>
 	</entry>
 	<entry>
-		<id>NickCarraway.questgiver</id>
+		<id>NickCarrawayquestgiver</id>
 		<BipLoad>
 			<id>aLB</id>
 			<id>bLB</id>
@@ -102,15 +102,15 @@
 			<id>bULB</id>
 		</BipUnLoad>
 		<ObjectLoad>
-			<id>NickCarraway.default</id>
-			<id>JayGatsby.questgiver</id>
+			<id>NickCarrawaydefault</id>
+			<id>JayGatsbyquestgiver</id>
 		</ObjectLoad>
 		<ObjectUnLoad>
-			<id>NickCarraway.questgiver</id>
+			<id>NickCarrawayquestgiver</id>
 		</ObjectUnLoad>
 	</entry>
 	<entry>
-		<id>JayGatsby.questgiver</id>
+		<id>JayGatsbyquestgiver</id>
 		<BipLoad>
 			<id>aLB</id>
 			<id>bLB</id>
@@ -120,16 +120,16 @@
 			<id>bULB</id>
 		</BipUnLoad>
 		<ObjectLoad>
-			<id>JayGatsby.annoyed</id>
-			<id>Daisy.questgiver2</id>
+			<id>JayGatsbyannoyed</id>
+			<id>Daisyquestgiver2</id>
 		</ObjectLoad>
 		<ObjectUnLoad>
-			<id>JayGatsby.questgiver</id>
-			<id>Daisy.default</id>
+			<id>JayGatsbyquestgiver</id>
+			<id>Daisydefault</id>
 		</ObjectUnLoad>
 	</entry>
 	<entry>
-		<id>Daisy.questgiver2</id>
+		<id>Daisyquestgiver2</id>
 		<BipLoad>
 			<id>aLB</id>
 			<id>bLB</id>
@@ -139,15 +139,15 @@
 			<id>bULB</id>
 		</BipUnLoad>
 		<ObjectLoad>
-			<id>Daisy.default</id>
-			<id>LibraryMan.questgiver</id>
+			<id>Daisydefault</id>
+			<id>LibraryManquestgiver</id>
 		</ObjectLoad>
 		<ObjectUnLoad>
-			<id>Daisy.questgiver2</id>
+			<id>Daisyquestgiver2</id>
 		</ObjectUnLoad>
 	</entry>	
 	<entry>
-		<id>LibraryMan.questgiver</id>
+		<id>LibraryManquestgiver</id>
 		<BipLoad>
 			<id>aLB</id>
 			<id>bLB</id>
@@ -157,15 +157,15 @@
 			<id>bULB</id>
 		</BipUnLoad>
 		<ObjectLoad>
-			<id>LibraryMan.default</id>
-			<id>EndersGame.book</id>		
+			<id>LibraryMandefault</id>
+			<id>EndersGamebook</id>		
 		</ObjectLoad>
 		<ObjectUnLoad>
-			<id>LibraryMan.questgiver</id>
+			<id>LibraryManquestgiver</id>
 		</ObjectUnLoad>
 	</entry>
 	<entry>
-		<id>EnderGame.book</id>
+		<id>EnderGamebook</id>
 		<BipLoad>
 			<id>aLB</id>
 			<id>bLB</id>
@@ -178,12 +178,12 @@
 			<!--need to put all the enders game entities here -->
 		</ObjectLoad>
 		<ObjectUnLoad>
-			<id>EndersGame.book</id>
-			<id>LibraryMan.default</id>
-			<id>Daisy.default</id>
-			<id>JayGatsby.default</id>
-			<id>NickCarraway.default</id>
-			<id>Jordan.default</id>
+			<id>EndersGamebook</id>
+			<id>LibraryMandefault</id>
+			<id>Daisydefault</id>
+			<id>JayGatsbydefault</id>
+			<id>NickCarrawaydefault</id>
+			<id>Jordandefault</id>
 		</ObjectUnLoad>
 	</entry>
 	<entry>
@@ -235,7 +235,7 @@
 		</ObjectUnLoad>
 	</entry>
 	<entry>
-		<id>Daisy.default</id>
+		<id>Daisydefault</id>
 		<BipLoad>
 			<id>aLB</id>
 			<id>bLB</id>
@@ -251,7 +251,7 @@
 		</ObjectUnLoad>
 	</entry>	
 	<entry>
-		<id>Jordan.default</id>
+		<id>Jordandefault</id>
 		<BipLoad>
 			<id>aLB</id>
 			<id>bLB</id>
@@ -267,7 +267,7 @@
 		</ObjectUnLoad>
 	</entry>	
 	<entry>
-		<id>NickCarraway.default</id>
+		<id>NickCarrawaydefault</id>
 		<BipLoad>
 			<id>aLB</id>
 			<id>bLB</id>
@@ -283,7 +283,7 @@
 		</ObjectUnLoad>
 	</entry>
 	<entry>
-		<id>JayGatsby.default</id>
+		<id>JayGatsbydefault</id>
 		<BipLoad>
 			<id>aLB</id>
 			<id>bLB</id>
@@ -299,7 +299,7 @@
 		</ObjectUnLoad>
 	</entry>
 	<entry>
-		<id>LibraryMan.default</id>
+		<id>LibraryMandefault</id>
 		<BipLoad>
 			<id>aLB</id>
 			<id>bLB</id>
