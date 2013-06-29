@@ -92,10 +92,18 @@ public class Quest {
 	            skip(parser);
 	        }
 	    }
+	    if(OL!=null){
 		changeLoadOnUseObject.put(id, OL);
+		}
+	    if(OUL!=null){
 		changeUnLoadOnUseObject.put(id, OUL);
+	    }
+	    if(BL!=null){
 		changeLoadOnUseBip.put(id, BL);
+	    }
+	    if(BUL!=null){
 		changeUnLoadOnUseBip.put(id, BUL);
+	    }
 	}
 	private List<String> readOUL(XmlPullParser parser) throws XmlPullParserException, IOException {
 	    parser.require(XmlPullParser.START_TAG, ns, "ObjectUnLoad");
