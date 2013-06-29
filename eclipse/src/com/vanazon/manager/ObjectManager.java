@@ -49,7 +49,8 @@ public class ObjectManager {
 	
 	public void updateGameObjects() {
 		for(String obj : objects) {
-			if (objectMap.get(obj) instanceof iUpdateable) {
+			if (objectMap.get(obj) instanceof iUpdateable && 
+					(objectMap.get(obj).getMapId().equals(bGName))) {
 				((iUpdateable) objectMap.get(obj)).Update();
 			}
 		}
@@ -59,7 +60,8 @@ public class ObjectManager {
 	
 	public void checkCollisions() {
 		for(String obj : objects) {
-			if (!(objectMap.get(obj) instanceof iCollidable)) {
+			if (!(objectMap.get(obj) instanceof iCollidable) || 
+					!(objectMap.get(obj).getMapId().equals(bGName))) {
 				continue;
 			}
 			for (String obj2 : objects) {
@@ -101,7 +103,7 @@ public class ObjectManager {
 	
 	public void renderGameObjects(Canvas canvas) {
 		for (String obj : objects) {
-			if(objectMap.get(obj).getMapId()==bGName){
+			if(objectMap.get(obj).getMapId().equals(bGName)) {
 				objectMap.get(obj).Render(canvas);
 			}
 		}

@@ -72,19 +72,13 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		//Quest q = new Quest("data/GatsbyEntityData.xml", context.getAssets());
 		
 		loadGameObjectsFromFile(context, "data/GatsbyGameObjects.xml");
-		Bitmap pauseBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.pause_button);
-
+		Bitmap pauseBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.dock);
 		GameObject pauseBtn = new GameObject("PauseButton", new Vector2D(1100, 0), new Vector2D(100, 100), new BoundingBox(), pauseBitmap, "", "");
 		objManager.addObject(pauseBtn);
 		
-		//Load Music
-		//SFXPlayer fx = new SFXPlayer(context);
-		//fx.addSound(1, R.raw.bdown);
-		//fx.playLoopedSound(1);
-
 		
 		MusicPlayer music = new MusicPlayer(context, R.raw.ending, true);
-		//music.startBGMusic();
+		music.startBGMusic();
 	}
 	
 	public void loadGameObjectsFromFile(Context context, String filepath) {
