@@ -1,8 +1,11 @@
 package com.vanazon.manager;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import android.content.Context;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
 
@@ -10,12 +13,17 @@ import com.vanazon.entities.GameObject;
 import com.vanazon.entities.Player;
 import com.vanazon.entities.iUpdateable;
 import com.vanazon.entities.iCollidable;
+import com.vanazon.quest.Quest;
 
 public class ObjectManager {
 	private List<GameObject> objects;
+	public Map<String,GameObject> objectMap;
 	private Player player;
-	public ObjectManager() {
+	Quest q;
+	public ObjectManager(Context context) {
 		objects = new ArrayList<GameObject>();
+		objectMap = new HashMap<String,GameObject> ();
+		q = new Quest("data/GatsbyEntityData.xml", context.getAssets());
 	}
 	
 	public Player getPlayer() {
@@ -26,6 +34,7 @@ public class ObjectManager {
 	}
 	
 	public void addObject(GameObject obj) {
+		objectMap.put(obj)
 		objects.add(obj);
 	}
 	
@@ -40,8 +49,6 @@ public class ObjectManager {
 			}
 		}
 		player.Update();
-		
-		
 		checkCollisions();
 	}
 	
@@ -60,6 +67,8 @@ public class ObjectManager {
 			}
 			if (obj.collides(player)) {
 				player.handleCollision(obj);
+				//get
+				q
 			}
 		}
 	}
