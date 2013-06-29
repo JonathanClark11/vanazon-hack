@@ -55,21 +55,19 @@ public class Player extends GameObject implements iInput, iUpdateable, iRenderab
 	
 	@Override
 	public void Render(Canvas canvas) {
-		Bitmap bitmap;
 		if (velocity.x < 0 && velocity.y < 0) {
 			//second quad
-			bitmap = bmp[1];
+			canvas.drawBitmap(bmp[1], position.x, position.y, null);
 		} else if (velocity.x > 0 && velocity.y < 0) {
 			//first quad
-			bitmap = bmp[0];
+			canvas.drawBitmap(bmp[0], position.x, position.y, null);
 		} else if (velocity.x < 0 && velocity.y > 0) {
 			//third quad
-			bitmap = bmp[2];
+			canvas.drawBitmap(bmp[2], position.x, position.y, null);
 		} else {
 			//fourth quad
-			bitmap = bmp[3];
+			canvas.drawBitmap(bmp[3], position.x, position.y, null);
 		}
-		canvas.drawBitmap(bitmap, position.x, position.y, null);
 	}
 	
 	public void handleCollision(GameObject obj) {
