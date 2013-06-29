@@ -95,7 +95,7 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 
 		//Quest q = new Quest("data/GatsbyEntityData.xml", context.getAssets());
 		
-		loadGameObjectsFromFile(context, "data/GatsbyGameObjects.xml");
+		loadGameObjectsFromFile(context, "data/TestGameObjects.xml");
 		
 		//Load Music
 		//SFXPlayer fx = new SFXPlayer(context);
@@ -117,7 +117,7 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 			XmlHandler mapper = new XmlHandler();
 			xmlR.setContentHandler(mapper);
 			
-			xmlR.parse(new InputSource(loader.getInputStream("data/GatsbyGameObjects.xml")));
+			xmlR.parse(new InputSource(loader.getInputStream(filepath)));
 			
 		} catch (Exception e) {
 			System.out.println("Error: " + e.getMessage());

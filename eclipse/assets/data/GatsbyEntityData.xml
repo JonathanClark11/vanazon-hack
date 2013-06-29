@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <feed>
+    <entry>
+		<id>start</id>
+		<ObjectLoad>
+			<id>Daisyquestgiver1</id>
+		</ObjectLoad>
+	</entry>
 	<entry>
-		<id>Daisy.questgiver1</id>
+		<id>Daisyquestgiver1</id>
 		<BipLoad>
 
 		</BipLoad>

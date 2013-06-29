@@ -96,6 +96,7 @@ public class ObjectManager {
 	
 	public void renderGameObjects(Canvas canvas) {
 		for (String obj : objects) {
+			GameObject object = objectMap.get(obj);
 			objectMap.get(obj).Render(canvas);
 		}
 		player.Render(canvas);
