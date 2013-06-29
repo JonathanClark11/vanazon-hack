@@ -16,12 +16,12 @@ import com.vanazon.entities.iCollidable;
 import com.vanazon.quest.Quest;
 
 public class ObjectManager {
-	private List<GameObject> objects;
+	private List<String> objects;
 	public Map<String,GameObject> objectMap;
 	private Player player;
 	Quest q;
 	public ObjectManager(Context context) {
-		objects = new ArrayList<GameObject>();
+		objects = new ArrayList<String>();
 		objectMap = new HashMap<String,GameObject> ();
 		q = new Quest("data/GatsbyEntityData.xml", context.getAssets());
 	}
@@ -34,8 +34,8 @@ public class ObjectManager {
 	}
 	
 	public void addObject(GameObject obj) {
-		objectMap.put(obj)
-		objects.add(obj);
+		objectMap.put(obj.getId(),obj);
+		objects.add(obj.getId());
 	}
 	
 	public void removeObject(GameObject obj) {
@@ -43,9 +43,9 @@ public class ObjectManager {
 	}
 	
 	public void updateGameObjects() {
-		for(GameObject obj : objects) {
-			if (obj instanceof iUpdateable) {
-				((iUpdateable) obj).Update();
+		for(String obj : objects) {
+			if (objectMap.get(obj) instanceof iUpdateable) {
+				((iUpdateable) objectMap.get(obj)).Update();
 			}
 		}
 		player.Update();
@@ -53,29 +53,38 @@ public class ObjectManager {
 	}
 	
 	public void checkCollisions() {
-		for(GameObject obj : objects) {
-			if (!(obj instanceof iCollidable)) {
+		for(String obj : objects) {
+			if (!(objectMap.get(obj) instanceof iCollidable)) {
 				continue;
 			}
-			for (GameObject obj2 : objects) {
-				if (obj instanceof iCollidable && obj2 instanceof iCollidable &&
+			for (String obj2 : objects) {
+				if (objectMap.get(obj) instanceof iCollidable && objectMap.get(obj2) instanceof iCollidable &&
 						!obj.equals(obj2)) {
-					if (obj.collides(obj2)) {
-						obj.handleCollision(obj2);
+					if (objectMap.get(obj).collides(objectMap.get(obj2))) {
+						objectMap.get(obj).handleCollision(objectMap.get(obj2));
 					}
 				}
 			}
-			if (obj.collides(player)) {
-				player.handleCollision(obj);
+			if (objectMap.get(obj).collides(player)) {
+				player.handleCollision(objectMap.get(obj));
 				//get
-				q
+				List<String> loadS = q.getObjectLoads(obj);
+				List<String> unLoadS = q.getObjectUnLoads(obj);
+				for(String cRenderS: objects){
+					if (unLoadS.contains(cRenderS)){
+						objects.remove(cRenderS);
+					}
+					if (loadS.contains(cRenderS)){
+						objects.add(cRenderS);
+					}
+				}
 			}
 		}
 	}
 	
 	public void renderGameObjects(Canvas canvas) {
-		for (GameObject obj : objects) {
-			obj.Render(canvas);
+		for (String obj : objects) {
+			objectMap.get(obj).Render(canvas);
 		}
 		player.Render(canvas);
 		

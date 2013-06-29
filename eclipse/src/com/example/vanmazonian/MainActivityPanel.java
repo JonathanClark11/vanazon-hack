@@ -49,7 +49,7 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		setFocusable(true);
 		
 		//Init variables here
-		objManager = new ObjectManager();
+		objManager = new ObjectManager(context);
 		bgManager = new BGManager();
 
 		Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
