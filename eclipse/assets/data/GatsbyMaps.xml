@@ -5,9 +5,9 @@
 	    <music>raw/balcony</music>
 	    <exitslist>
 	        <exit>
-	            <exitId>FF009b00</exitId>
-	            <posX>1180</posX>
-	            <posY>750</posY>
+	            <exitId>255</exitId>
+	            <posX>1000</posX>
+	            <posY>600</posY>
 	            <mapId>hallways_party_exit</mapId>
 	        </exit>
 	    </exitslist>
@@ -17,19 +17,19 @@
 	    <music>raw/balcony</music>
 	    <exitslist>
 	        <exit>
-	            <exitId>FF00cd00</exitId>
+	            <exitId>205</exitId>
 	            <posX>1100</posX>
 	            <posY>100</posY>
 	            <mapId>hallways</mapId>
 	        </exit>
 	        <exit>
-	            <exitId>FF009b00</exitId>
+	            <exitId>155</exitId>
 	            <posX>600</posX>
 	            <posY>750</posY>
 	            <mapId>hallways2</mapId>
 	        </exit>
 	        <exit>
-	            <exitId>FF00ff00</exitId>
+	            <exitId>255</exitId>
 	            <posX>465</posX>
 	            <posY>465</posY>
 	            <mapId>party_entrance</mapId>
@@ -42,25 +42,25 @@
 	    <music>raw/balcony</music>
 	    <exitslist>
 	        <exit>
-	            <exitId>FF006900</exitId>
+	            <exitId>105</exitId>
 	            <posX>250</posX>
 	            <posY>750</posY>
 	            <mapId>hallways_party_exit</mapId>
 	        </exit>
 	        <exit>
-	            <exitId>FF00cd00</exitId>
+	            <exitId>205</exitId>
 	            <posX>750</posX>
 	            <posY>75</posY>
 	            <mapId>hallways_garden_exit</mapId>
 	        </exit>
 	        <exit>
-	            <exitId>FF00ff00</exitId>
+	            <exitId>255</exitId>
 	            <posX>750</posX>
 	            <posY>50</posY>
 	            <mapId>interior</mapId>
 	        </exit>
 	        <exit>
-	            <exitId>FF009b00</exitId>
+	            <exitId>155</exitId>
 	            <posX>150</posX>
 	            <posY>750</posY>
 	            <mapId>hallways_dock</mapId>
@@ -73,13 +73,13 @@
 	    <music>raw/balcony</music>
 	    <exitslist>
 	        <exit>
-	            <exitId>FF009b00</exitId>
+	            <exitId>155</exitId>
 	            <posX>350</posX>
 	            <posY>125</posY>
 	            <mapId>hallways_party_exit</mapId>
 	        </exit>
 	        <exit>
-	            <exitId>FF00cd00</exitId>
+	            <exitId>205</exitId>
 	            <posX>250</posX>
 	            <posY>700</posY>
 	            <mapId>large_pool</mapId>
@@ -92,7 +92,7 @@
 	    <music>raw/balcony</music>
 	    <exitslist>
 	        <exit>
-	            <exitId>FF00cd00</exitId>
+	            <exitId>205</exitId>
 	            <posX>550</posX>
 	            <posY>200</posY>
 	            <mapId>hallway_dock_exit</mapId>
@@ -104,13 +104,13 @@
 	    <music>raw/balcony</music>
 	    <exitslist>
 	        <exit>
-	            <exitId>FF00ff00</exitId>
+	            <exitId>255</exitId>
 	            <posX>350</posX>
 	            <posY>750</posY>
 	            <mapId>dock</mapId>
 	        </exit>
 	        <exit>
-	            <exitId>FF00cd00</exitId>
+	            <exitId>205</exitId>
 	            <posX>600</posX>
 	            <posY>700</posY>
 	            <mapId>hallways</mapId>
@@ -123,7 +123,7 @@
 	    <music>raw/balcony</music>
 	    <exitslist>
 	        <exit>
-	            <exitId>FF00cd00</exitId>
+	            <exitId>205</exitId>
 	            <posX>100</posX>
 	            <posY>300</posY>
 	            <mapId>hallways</mapId>
@@ -135,13 +135,13 @@
 	    <music>raw/balcony</music>
 	    <exitslist>
 	        <exit>
-	            <exitId>FF009b00</exitId>
+	            <exitId>155</exitId>
 	            <posX>1200</posX>
 	            <posY>500</posY>
 	            <mapId>hallways</mapId>
 	        </exit>
 	        <exit>
-	            <exitId>FF00cd00</exitId>
+	            <exitId>205</exitId>
 	            <posX>250</posX>
 	            <posY>250</posY>
 	            <mapId>garden_entrance</mapId>
@@ -154,13 +154,13 @@
 	    <music>raw/balcony</music>
 	    <exitslist>
 	        <exit>
-	            <exitId>FF00ff00</exitId>
+	            <exitId>255</exitId>
 	            <posX>1050</posX>
 	            <posY>700</posY>
 	            <mapId>garden_exit</mapId>
 	        </exit>
 	        <exit>
-	            <exitId>FF00cd00</exitId>
+	            <exitId>205</exitId>
 	            <posX>100</posX>
 	            <posY>500</posY>
 	            <mapId>garden2</mapId>
@@ -172,13 +172,13 @@
 	    <music>raw/balcony</music>
 	    <exitslist>
 	        <exit>
-	            <exitId>FF00ff00</exitId>
+	            <exitId>255</exitId>
 	            <posX>750</posX>
 	            <posY>750</posY>
 	            <mapId>garden_entrance</mapId>
 	        </exit>
 	        <exit>
-	            <exitId>FF00cd00</exitId>
+	            <exitId>205</exitId>
 	            <posX>850</posX>
 	            <posY>750</posY>
 	            <mapId>garden1</mapId>
@@ -190,7 +190,7 @@
 	    <music>raw/balcony</music>
 	    <exitslist>
 	        <exit>
-	            <exitId>FF00cd00</exitId>
+	            <exitId>205</exitId>
 	            <posX>650</posX>
 	            <posY>750</posY>
 	            <mapId>garden2</mapId>
@@ -202,7 +202,7 @@
 	    <music>raw/balcony</music>
 	    <exitslist>
 	        <exit>
-	            <exitId>FF009b00</exitId>
+	            <exitId>155</exitId>
 	            <posX>100</posX>
 	            <posY>700</posY>
 	            <mapId>hallways2</mapId>

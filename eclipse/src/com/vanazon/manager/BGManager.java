@@ -12,6 +12,7 @@ import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 
 public class BGManager {
 	
@@ -33,20 +34,21 @@ public class BGManager {
 		this.BGcollide = bgcollide;
 	}
 	public void update(ObjectManager obj) {
-		int color = obj.getPlayer().handleCollision(BGcollide);
+		int color = obj.getPlayer().handleBitmapCollision(BGcollide);
 		if (color != 0){
-		List<MapExit> exits = map.getExits(BGName);
-		for(MapExit e: exits){
-			if(e.getExitId() == (color+"")){
-				obj.getPlayer().position = e.getPosition();
-				BGName = e.getMapId();
-				int resID = context.getResources().getIdentifier(BGName, "drawable", context.getPackageName());
-				BG = BitmapFactory.decodeResource(resources, resID);
-				int resID2 = context.getResources().getIdentifier(BGName, "drawable", context.getPackageName());
-				BGcollide = BitmapFactory.decodeResource(resources, resID2);
-				obj.setBackGround(BGName);
+			List<MapExit> exits = map.getExits(BGName);
+			for(MapExit e: exits) {
+				int exitId = Integer.parseInt(e.getExitId());
+				if(exitId==color){
+					obj.getPlayer().position = e.getPosition();
+					BGName = e.getMapId();
+					int resID = context.getResources().getIdentifier(BGName, "drawable", context.getPackageName());
+					BG = BitmapFactory.decodeResource(resources, resID);
+					int resID2 = context.getResources().getIdentifier(BGName + "_bitmap", "drawable", context.getPackageName());
+					BGcollide = BitmapFactory.decodeResource(resources, resID2);
+					obj.setBackGround(BGName);
+				}
 			}
-		}
 		}
 	}
 	

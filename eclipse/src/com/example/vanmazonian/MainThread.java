@@ -1,5 +1,7 @@
 package com.example.vanmazonian;
 
+import java.util.concurrent.locks.Lock;
+
 import com.vanazon.entities.UpdateState;
 
 import android.graphics.Canvas;
@@ -30,13 +32,13 @@ public class MainThread extends Thread {
 		long diff;
 		int sleep = 0;
 		int numSkip;
-		
 		while(running) {
 			canvas = null;
 			try {
 				canvas = this.surfaceHolder.lockCanvas();
+				
 				synchronized (surfaceHolder) {
-					if(!Global.pause) { // && !Global.dialogue) {
+					if(!Global.pause) {
 						begin = System.currentTimeMillis();
 						numSkip = 0;
 						this.gamePanel.update();
