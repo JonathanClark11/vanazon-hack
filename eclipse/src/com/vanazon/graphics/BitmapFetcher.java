@@ -1,13 +1,18 @@
 package com.vanazon.graphics;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 
 public class BitmapFetcher {
 	
-	ArrayList<Bitmap> listOfBitmaps;
+	private HashMap<Integer,Bitmap> mapOfBitmaps;
+	
+	// pass in an array of things to load!
+	public void loadListOfBitmaps(){
+		
+	}
 	
 	// fetch a bitmap 
 	public void loadBitmap(Resources res, int resId, int reqWidth, int reqHeight){
@@ -15,9 +20,16 @@ public class BitmapFetcher {
         task.execute(resId);
 	}
 	
-	public void addBitmap(Bitmap bitmap){
-		listOfBitmaps.add(bitmap);
+	// helper for BitmapWorkerTask to return the bitmap loaded
+	protected void addBitmap(int resId, Bitmap bitmap){
+		mapOfBitmaps.put(Integer.valueOf(resId), bitmap);
 	}
+	
+	// given a resource id, get the corresponding bitmap
+	public void getBitmap(int resId){
+		mapOfBitmaps.get(Integer.valueOf(resId));
+	}
+
 	
 
 }
