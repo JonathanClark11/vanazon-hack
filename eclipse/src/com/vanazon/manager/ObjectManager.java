@@ -39,7 +39,6 @@ public class ObjectManager {
 	
 	public void addObject(GameObject obj) {
 		objectMap.put(obj.getId(),obj);
-		//objects.add(obj.getId());
 	}
 	
 	public void removeObject(GameObject obj) {
@@ -78,14 +77,13 @@ public class ObjectManager {
 				}
 				List<String> loadS = q.getObjectLoads(obj);
 				List<String> unLoadS = q.getObjectUnLoads(obj);
-				for(String cRenderS: objects){
-					if (unLoadS.contains(cRenderS)){
-						objects.remove(cRenderS);
-					}
+				for(String cRenderS: unLoadS){
+					objects.remove(cRenderS);
 				}
 				for(String item : loadS) {
 					objects.add(item);
 				}
+				break;
 			}
 		}
 	}
@@ -96,7 +94,6 @@ public class ObjectManager {
 	
 	public void renderGameObjects(Canvas canvas) {
 		for (String obj : objects) {
-			GameObject object = objectMap.get(obj);
 			objectMap.get(obj).Render(canvas);
 		}
 		player.Render(canvas);
@@ -105,6 +102,7 @@ public class ObjectManager {
 	
 	public boolean handleInput(MotionEvent event) {
 		//TODO: Check if person pressed an object
+		
 		return player.handleInput(event);
 	}
 	

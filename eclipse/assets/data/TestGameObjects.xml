@@ -19,7 +19,7 @@
 	    <sizeX>50</sizeX>
 	    <sizeY>50</sizeY>
 	    <bitmap>drawable/ic_launcher</bitmap>
-	    <dialog></dialog>
+	    <dialog>newDialog</dialog>
 	    <mapId>hallways_party_exit</mapId>
 	</entry>
 </ITEMLIST>

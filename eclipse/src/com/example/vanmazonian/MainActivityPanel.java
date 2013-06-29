@@ -18,6 +18,7 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 
+import com.vanazon.entities.GameObject;
 import com.vanazon.entities.Item;
 import com.vanazon.entities.NPC;
 import com.vanazon.entities.Player;
@@ -47,6 +48,8 @@ import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.vanazon.utils.BoundingBox;
 import com.vanazon.utils.Vector2D;
 import com.vanazon.utils.XmlHandler;
 import com.vanazon.utils.XmlLoader;
@@ -96,6 +99,10 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		//Quest q = new Quest("data/GatsbyEntityData.xml", context.getAssets());
 		
 		loadGameObjectsFromFile(context, "data/TestGameObjects.xml");
+		Bitmap pauseBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.dock);
+		
+		GameObject pauseBtn = new GameObject("PauseButton", new Vector2D(1100, 0), new Vector2D(100, 100), new BoundingBox(), pauseBitmap, "", "");
+		objManager.addObject(pauseBtn);
 		
 		//Load Music
 		//SFXPlayer fx = new SFXPlayer(context);
@@ -228,10 +235,13 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 	
 	protected void renderDialogue() {
 		final Dialog dialog = new Dialog(context);
+		dialog.setContentView(R.layout.dialog);
 		TextView dialogue = (TextView) dialog.findViewById(R.id.text);
-		String text = dManager.process();
-		dialogue.setText(text);
-		dialog.show();
+		if (dialogue != null) {
+			String text = dManager.process();
+			dialogue.setText(text);
+			dialog.show();
+		}
 	}
 	
 	public void update() {

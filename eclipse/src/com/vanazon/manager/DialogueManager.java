@@ -1,11 +1,8 @@
 package com.vanazon.manager;
 
-import android.graphics.Bitmap;
-
 public class DialogueManager {
 	
 	private String[] string;
-	private ObjectManager obj;
 	private int display;
 	
 	public DialogueManager() {
@@ -21,7 +18,7 @@ public class DialogueManager {
 		this.string = string;
 	}
 	public String process() {
-		if(display < string.length) {
+		if(display < this.string.length) {
 			display++;
 			return string[display-1];
 		} else {
