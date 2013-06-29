@@ -5,11 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.view.MotionEvent;
+import android.widget.TextView;
 
 import com.example.vanmazonian.Global;
+import com.example.vanmazonian.R;
 import com.vanazon.entities.GameObject;
 import com.vanazon.entities.Player;
 import com.vanazon.entities.iUpdateable;
@@ -21,10 +24,11 @@ public class ObjectManager {
 	public Map<String,GameObject> objectMap;
 	private Player player;
 	private String[] dialogueArray;
+	private Context context;
 	Quest q;
 	public ObjectManager(Context context) {
 		objects = new ArrayList<String>();
-		
+		this.context = context;
 		objectMap = new HashMap<String,GameObject> ();
 		q = new Quest("data/testQuest.xml", context.getAssets());
 		objects = q.getObjectLoads("start");
@@ -71,20 +75,25 @@ public class ObjectManager {
 			if (objectMap.get(obj).collides(player)) {
 				player.handleCollision(objectMap.get(obj));
 				if(objectMap.get(obj).getDialog() != null) {
-					Global.dialogue = true;
-					String string = objectMap.get(obj).getDialog();
-					dialogueArray = string.split("|");
+					System.out.println(objectMap.get(obj).getDialog().split("/")[0]);
+					DialogueManager.setDialogText(objectMap.get(obj).getDialog().split("/"));
+					DialogueManager.setNpcName(objectMap.get(obj).getId());
+					DialogueManager.showDialogOnNextUpdate = true;
 				}
-				List<String> loadS = q.getObjectLoads(obj);
-				List<String> unLoadS = q.getObjectUnLoads(obj);
-				for(String cRenderS: unLoadS){
-					objects.remove(cRenderS);
-				}
-				for(String item : loadS) {
-					objects.add(item);
-				}
+				removeAd(obj);
 				break;
 			}
+		}
+	}
+	
+	public void removeAd(String obj) {
+		List<String> loadS = q.getObjectLoads(obj);
+		List<String> unLoadS = q.getObjectUnLoads(obj);
+		for(String cRenderS: unLoadS){
+			objects.remove(cRenderS);
+		}
+		for(String item : loadS) {
+			objects.add(item);
 		}
 	}
 	

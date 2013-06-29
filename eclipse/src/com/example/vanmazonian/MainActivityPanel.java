@@ -77,7 +77,7 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		dManager = new DialogueManager();
 
 		Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-		Player player = new Player(new Vector2D(1000, 700), new Vector2D(20, 20), bmp);
+		Player player = new Player(new Vector2D(450, 500), new Vector2D(20, 20), bmp);
 		objManager.setPlayer(player);
 		
 //		Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
@@ -115,7 +115,7 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 
 		
 		MusicPlayer music = new MusicPlayer(context, R.raw.ending, true);
-		music.startBGMusic();
+		//music.startBGMusic();
 	}
 	
 	public void loadGameObjectsFromFile(Context context, String filepath) {
@@ -218,16 +218,12 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 			DialogFragment pmenu = new PauseMenu();
 			pmenu.show(((FragmentActivity) context).getSupportFragmentManager(), "pause");
 		}
-		if (!Global.dialogue) {
-			consumed = objManager.handleInput(event);
-		} else if(dManager.getDisplay() == 0) {
-			dManager.setString(objManager.sendDialogue());
-			renderDialogue();
-		} else if(dManager.getDisplay() == dManager.getStringLen()) {
-			Global.dialogue = false;
-		} else {
-			renderDialogue();
+		if (DialogueManager.showDialogOnNextUpdate == true) {
+			DialogueManager.showDialog(context, DialogueManager.dialogText[0]);
+			DialogueManager.showDialogOnNextUpdate = false;
 		}
+		
+		consumed = objManager.handleInput(event);
 		return consumed;
 	}
 

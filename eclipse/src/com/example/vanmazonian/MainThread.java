@@ -36,7 +36,7 @@ public class MainThread extends Thread {
 			try {
 				canvas = this.surfaceHolder.lockCanvas();
 				synchronized (surfaceHolder) {
-					if(!Global.pause && !Global.dialogue) {
+					if(!Global.pause) { // && !Global.dialogue) {
 						begin = System.currentTimeMillis();
 						numSkip = 0;
 						this.gamePanel.update();
