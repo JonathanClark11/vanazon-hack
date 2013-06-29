@@ -155,6 +155,16 @@
 	    <dialog>You've found The Great Gatsby book! We can now digitize it for the kindle!</dialog>
 	    <mapId>library</mapId>
 	</entry>
-	
+	<entry>
+	    <type>NPC</type>
+	    <id>PauseButton</id>
+	    <posX>1100</posX>
+	    <posY>0</posY>
+	    <sizeX>100</sizeX>
+	    <sizeY>100</sizeY>
+	    <bitmap></bitmap>
+	    <dialog></dialog>
+	    <mapId>all</mapId>
+	</entry>
 	
 </ITEMLIST>

@@ -11,20 +11,24 @@ import android.view.MotionEvent;
 
 import com.vanazon.entities.GameObject;
 import com.vanazon.entities.Player;
-import com.vanazon.entities.iUpdateable;
 import com.vanazon.entities.iCollidable;
+import com.vanazon.entities.iUpdateable;
 import com.vanazon.quest.Quest;
 
 public class ObjectManager {
 	private List<String> objects;
 	public Map<String,GameObject> objectMap;
 	private Player player;
+	private String[] dialogueArray;
+	private Context context;
 	Quest q;
-	public ObjectManager(Context context) {
+	private String bGName;
+	public ObjectManager(Context context, String questFilePath) {
+		bGName = "party_entrance";
 		objects = new ArrayList<String>();
-		
+		this.context = context;
 		objectMap = new HashMap<String,GameObject> ();
-		q = new Quest("data/testQuest.xml", context.getAssets());
+		q = new Quest(questFilePath, context.getAssets());
 		objects = q.getObjectLoads("start");
 	}
 	
@@ -37,7 +41,6 @@ public class ObjectManager {
 	
 	public void addObject(GameObject obj) {
 		objectMap.put(obj.getId(),obj);
-		//objects.add(obj.getId());
 	}
 	
 	public void removeObject(GameObject obj) {
@@ -69,24 +72,38 @@ public class ObjectManager {
 			}
 			if (objectMap.get(obj).collides(player)) {
 				player.handleCollision(objectMap.get(obj));
-				//get
-				List<String> loadS = q.getObjectLoads(obj);
-				List<String> unLoadS = q.getObjectUnLoads(obj);
-				for(String cRenderS: objects){
-					if (unLoadS.contains(cRenderS)){
-						objects.remove(cRenderS);
-					}
+				if(objectMap.get(obj).getDialog() != null) {
+					System.out.println(objectMap.get(obj).getDialog().split("/")[0]);
+					DialogueManager.setDialogText(objectMap.get(obj).getDialog().split("/"));
+					DialogueManager.setNpcName(objectMap.get(obj).getId());
+					DialogueManager.showDialogOnNextUpdate = true;
 				}
-				for(String item : loadS) {
-					objects.add(item);
-				}
+				removeAd(obj);
+				break;
 			}
 		}
 	}
 	
+	public void removeAd(String obj) {
+		List<String> loadS = q.getObjectLoads(obj);
+		List<String> unLoadS = q.getObjectUnLoads(obj);
+		for(String cRenderS: unLoadS){
+			objects.remove(cRenderS);
+		}
+		for(String item : loadS) {
+			objects.add(item);
+		}
+	}
+	
+	public String[] sendDialogue() {
+		return dialogueArray;
+	}
+	
 	public void renderGameObjects(Canvas canvas) {
 		for (String obj : objects) {
-			objectMap.get(obj).Render(canvas);
+			if(objectMap.get(obj).getMapId()==bGName){
+				objectMap.get(obj).Render(canvas);
+			}
 		}
 		player.Render(canvas);
 		
@@ -94,10 +111,16 @@ public class ObjectManager {
 	
 	public boolean handleInput(MotionEvent event) {
 		//TODO: Check if person pressed an object
+		
 		return player.handleInput(event);
 	}
 	
 	public Player getPlayerObject() {
 		return player;
+	}
+
+	public void setBackGround(String bGName) {
+		this.bGName = bGName;
+		
 	}
 }
