@@ -9,6 +9,7 @@ import android.view.MotionEvent;
 import com.vanazon.entities.GameObject;
 import com.vanazon.entities.Player;
 import com.vanazon.entities.iUpdateable;
+import com.vanazon.entities.iCollidable;
 
 public class ObjectManager {
 	private List<GameObject> objects;
@@ -36,6 +37,28 @@ public class ObjectManager {
 			}
 		}
 		player.Update();
+		
+		
+		checkCollisions();
+	}
+	
+	public void checkCollisions() {
+		for(GameObject obj : objects) {
+			if (!(obj instanceof iCollidable)) {
+				continue;
+			}
+			for (GameObject obj2 : objects) {
+				if (obj instanceof iCollidable && obj2 instanceof iCollidable &&
+						!obj.equals(obj2)) {
+					if (obj.collides(obj2)) {
+						obj.handleCollision(obj2);
+					}
+				}
+			}
+			if (obj.collides(player)) {
+				player.handleCollision(obj);
+			}
+		}
 	}
 	
 	public void renderGameObjects(Canvas canvas) {

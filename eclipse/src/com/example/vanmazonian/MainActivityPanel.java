@@ -1,6 +1,9 @@
 package com.example.vanmazonian;
 
+import com.vanazon.entities.NPC;
 import com.vanazon.entities.Player;
+import com.vanazon.graphics.BitmapConfig;
+import com.vanazon.graphics.BitmapFetcher;
 import com.vanazon.manager.ObjectManager;
 import com.vanazon.utils.Vector2D;
 
@@ -27,9 +30,22 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		
 		//Init variables here
 		objManager = new ObjectManager();
+
 		Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-		Player player = new Player(new Vector2D(0, 0), new Vector2D(50, 50), bmp);
+		Player player = new Player(new Vector2D(20, 20), new Vector2D(50, 50), bmp);
 		objManager.setPlayer(player);
+		
+		Bitmap bmp2 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+		NPC obj1 = new NPC(new Vector2D(100, 500), new Vector2D(50, 50), bmp);
+		objManager.addObject(obj1);
+		
+		Bitmap bmp3 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+		NPC obj2 = new NPC(new Vector2D(500, 200), new Vector2D(50, 50), bmp);
+		objManager.addObject(obj2);
+		
+		Bitmap bmp4 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+		NPC obj3 = new NPC(new Vector2D(850, 500), new Vector2D(50, 50), bmp);
+		objManager.addObject(obj3);
 	}
 
 	@Override
@@ -61,11 +77,9 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 	
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-//		System.out.println("event: " + event.getActionMasked());
 		boolean consumed = false;
 		consumed = objManager.handleInput(event);
 		return consumed;
-//		return super.onTouchEvent(event);
 	}
 
 	protected void render(Canvas canvas) {

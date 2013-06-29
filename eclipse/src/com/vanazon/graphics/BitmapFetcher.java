@@ -3,11 +3,14 @@ package com.vanazon.graphics;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 
 public class BitmapFetcher {
 	
 	private HashMap<Integer,Bitmap> mapOfBitmaps;
+	
+	public BitmapFetcher() {}
 	
 	// pass in an array of things to load!
 	public void loadListOfBitmaps(ArrayList<BitmapConfig> listOfConfigs){
@@ -29,8 +32,8 @@ public class BitmapFetcher {
 	}
 	
 	// given a resource id, get the corresponding bitmap
-	public void getBitmap(int resId){
-		mapOfBitmaps.get(Integer.valueOf(resId));
+	public Bitmap getBitmap(int resId){
+		return mapOfBitmaps.get(Integer.valueOf(resId));
 	}
 
 	

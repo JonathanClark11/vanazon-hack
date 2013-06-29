@@ -23,12 +23,14 @@ public class GameObject implements iRenderable, iCollidable {
 		this.position = position;
 		this.size = size;
 		this.bbox = bbox;
+		this.bbox.position = this.position;
 		this.bitmap = bitmap;
 	}
 	
 	@Override
 	public void Render(Canvas canvas) {
-		canvas.drawBitmap(bitmap, position.x - (bitmap.getWidth() / 2), position.y - (bitmap.getHeight() / 2), null);
+		canvas.drawBitmap(bitmap, position.x, position.y, null);
+		this.bbox.Render(canvas);
 	}
 
 	@Override
@@ -37,6 +39,9 @@ public class GameObject implements iRenderable, iCollidable {
 	}
 	public boolean collides(GameObject object) {
 		return this.bbox.collides(object.bbox);
+	}
+	public void handleCollision(GameObject obj) {
+		//TODO:
 	}
 	
 	/**
@@ -49,9 +54,11 @@ public class GameObject implements iRenderable, iCollidable {
 		}
 		offset.scale(PlayerSettings.MOVEMENT_SPEED);
 		position.append(offset);
+		this.bbox.position = position;
 	}
 	
 	public void setPosition(Vector2D position) {
 		this.position = position;
+		this.bbox.position = position;
 	}
 }
