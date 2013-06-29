@@ -44,6 +44,7 @@ public class BGManager {
 				BG = BitmapFactory.decodeResource(resources, resID);
 				int resID2 = context.getResources().getIdentifier(BGName, "drawable", context.getPackageName());
 				BGcollide = BitmapFactory.decodeResource(resources, resID2);
+				obj.setBackGround(BGName);
 			}
 		}
 		}
