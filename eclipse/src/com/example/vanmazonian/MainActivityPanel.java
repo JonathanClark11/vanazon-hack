@@ -1,13 +1,19 @@
 package com.example.vanmazonian;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
 import com.vanazon.entities.NPC;
 import com.vanazon.entities.Player;
 import com.vanazon.graphics.BitmapConfig;
 import com.vanazon.graphics.BitmapFetcher;
 import com.vanazon.manager.ObjectManager;
+import com.vanazon.quest.Quest;
 import com.vanazon.utils.Vector2D;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -46,6 +52,9 @@ public class MainActivityPanel extends SurfaceView implements Callback {
 		Bitmap bmp4 = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
 		NPC obj3 = new NPC(new Vector2D(850, 500), new Vector2D(50, 50), bmp);
 		objManager.addObject(obj3);
+		
+		//Quest q = new Quest("data/GatsbyEntityData.xml", context.getAssets());
+		
 	}
 
 	@Override
