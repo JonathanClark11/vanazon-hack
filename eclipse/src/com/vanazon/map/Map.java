@@ -15,7 +15,7 @@ import android.content.res.AssetManager;
 import android.util.Xml;
 
 public class Map {
-	HashMap<String,List<MapExit>> exits;
+	public HashMap<String,List<MapExit>> exits;
 	HashMap<String, String> music;
 	HashMap<String, String> wallOverlays;
 	
